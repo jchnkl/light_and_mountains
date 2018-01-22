@@ -199,6 +199,69 @@ $("#lam-gallery").justifiedGallery({
         1024 : '_b'
     }
 });
+
+// function runPhotoSwipe() {
+  var pswpElement = document.querySelectorAll('.pswp')[0];
+
+  // build items array
+  var items = [
+    {
+      src: 'img/2017-11-08T04:44:08+0100_3076.jpg',
+      w: 4024,
+      h: 4024
+    },
+    {
+      src: 'img/2017-11-08T05:14:58+0100_3077.jpg',
+      w: 3715,
+      h: 3715
+    },
+    {
+      src: 'img/2017-11-08T09:15:35+0100_3080.jpg',
+      w: 4904,
+      h: 3269
+    },
+    {
+      src: 'img/2017-11-09T02:55:42+0100_3096.jpg',
+      w: 3954,
+      h: 5913
+    },
+    {
+      src: 'img/2017-11-14T16:23:03+0100_3305.jpg',
+      w: 4024,
+      h: 6022
+    },
+    {
+      src: 'img/2017-11-16T13:34:11+0100_3424.jpg',
+      w: 2937,
+      h: 3916
+    },
+    {
+      src: 'img/2017-11-17T13:38:01+0100_3517.jpg',
+      w: 4519,
+      h: 3778
+    },
+    {
+      src: 'img/2017-11-17T15:31:43+0100_3542.jpg',
+      w: 3924,
+      h: 5868
+    },
+    {
+      src: 'img/2017-11-22T12:59:15+0100_3811.jpg',
+      w: 5190,
+      h: 3460
+    }
+  ];
+
+  // define options (if needed)
+  var options = {
+    // optionName: 'option value'
+    // for example:
+    index: 0 // start at first slide
+  };
+
+  var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+  gallery.init();
+// }
     </script>
 
   </body>

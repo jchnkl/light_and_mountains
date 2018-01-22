@@ -16,14 +16,16 @@
 
     <link href="css/justifiedGallery.min.css" rel="stylesheet">
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" rel="stylesheet">
+
     <!-- Core CSS file -->
-    <link href="css/photoswipe.css" rel="stylesheet">
+    <!-- <link href="css/photoswipe.css" rel="stylesheet"> -->
 
     <!-- Skin CSS file (styling of UI - buttons, caption, etc.)
     In the folder of skin CSS file there are also:
     - .png and .svg icons sprite,
     - preloader.gif (for browsers that do not support CSS animations) -->
-    <link href="css/default-skin/default-skin.css" rel="stylesheet">
+    <!-- <link href="css/default&#45;skin/default&#45;skin.css" rel="stylesheet"> -->
 
     <link href="css/lam-content.css" rel="stylesheet">
 
@@ -63,39 +65,39 @@
 
         <div id="lam-gallery" >
 
-        <a href="img/2017-11-08T04:44:08+0100_3076.jpg">
+        <a data-fancybox="gallery" href="img/2017-11-08T04:44:08+0100_3076.jpg">
         <img alt="The Village"
             src="img/tns/2017-11-08T04:44:08+0100_3076.jpg" height="100" width="100"/>
         </a>
-        <a href="img/2017-11-08T05:14:58+0100_3077.jpg">
+        <a data-fancybox="gallery" href="img/2017-11-08T05:14:58+0100_3077.jpg">
         <img alt="The river, the valley & the mountain"
             src="img/tns/2017-11-08T05:14:58+0100_3077.jpg" height="100" width="100"/>
         </a>
-        <a href="img/2017-11-08T09:15:35+0100_3080.jpg">
+        <a data-fancybox="gallery" href="img/2017-11-08T09:15:35+0100_3080.jpg">
         <img alt="Grazing Horses"
             src="img/tns/2017-11-08T09:15:35+0100_3080.jpg" height="100" width="150"/>
         </a>
-        <a href="img/2017-11-09T02:55:42+0100_3096.jpg">
+        <a data-fancybox="gallery" href="img/2017-11-09T02:55:42+0100_3096.jpg">
         <img alt="First light"
             src="img/tns/2017-11-09T02:55:42+0100_3096.jpg" height="100" width="67"/>
         </a>
-        <a href="img/2017-11-14T16:23:03+0100_3305.jpg">
+        <a data-fancybox="gallery" href="img/2017-11-14T16:23:03+0100_3305.jpg">
         <img alt=""
             src="img/tns/2017-11-14T16:23:03+0100_3305.jpg" height="100" width="67"/>
         </a>
-        <a href="img/2017-11-16T13:34:11+0100_3424.jpg">
+        <a data-fancybox="gallery" href="img/2017-11-16T13:34:11+0100_3424.jpg">
         <img alt=""
             src="img/tns/2017-11-16T13:34:11+0100_3424.jpg" height="100" width="75"/>
         </a>
-        <a href="img/2017-11-17T13:38:01+0100_3517.jpg">
+        <a data-fancybox="gallery" href="img/2017-11-17T13:38:01+0100_3517.jpg">
         <img alt=""
             src="img/tns/2017-11-17T13:38:01+0100_3517.jpg" height="100" width="120"/>
         </a>
-        <a href="img/2017-11-17T15:31:43+0100_3542.jpg">
+        <a data-fancybox="gallery" href="img/2017-11-17T15:31:43+0100_3542.jpg">
         <img alt="The Milky Way over Annapurna South"
             src="img/tns/2017-11-17T15:31:43+0100_3542.jpg" height="100" width="67"/>
         </a>
-        <a href="img/2017-11-22T12:59:15+0100_3811.jpg">
+        <a data-fancybox="gallery" href="img/2017-11-22T12:59:15+0100_3811.jpg">
         <img alt="The Buddhist stupa of Boudhanath glowing in the setting sun"
             src="img/tns/2017-11-22T12:59:15+0100_3811.jpg" height="100" width="150"/>
         </a>
@@ -104,72 +106,72 @@
 
     </div>
 
-    <!-- Root element of PhotoSwipe. Must have class pswp. -->
-    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-        <!-- Background of PhotoSwipe.
-             It's a separate element as animating opacity is faster than rgba(). -->
-        <div class="pswp__bg"></div>
-
-        <!-- Slides wrapper with overflow:hidden. -->
-        <div class="pswp__scroll-wrap">
-
-            <!-- Container that holds slides.
-                PhotoSwipe keeps only 3 of them in the DOM to save memory.
-                Don't modify these 3 pswp__item elements, data is added later on. -->
-            <div class="pswp__container">
-                <div class="pswp__item"></div>
-                <div class="pswp__item"></div>
-                <div class="pswp__item"></div>
-            </div>
-
-            <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-            <div class="pswp__ui pswp__ui--hidden">
-
-                <div class="pswp__top-bar">
-
-                    <!--  Controls are self-explanatory. Order can be changed. -->
-
-                    <div class="pswp__counter"></div>
-
-                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-
-                    <button class="pswp__button pswp__button--share" title="Share"></button>
-
-                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-
-                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-
-                    <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                    <!-- element will get class pswp__preloader--active when preloader is running -->
-                    <div class="pswp__preloader">
-                        <div class="pswp__preloader__icn">
-                          <div class="pswp__preloader__cut">
-                            <div class="pswp__preloader__donut"></div>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                    <div class="pswp__share-tooltip"></div>
-                </div>
-
-                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-                </button>
-
-                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-                </button>
-
-                <div class="pswp__caption">
-                    <div class="pswp__caption__center"></div>
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
+<!--     <!&#45;&#45; Root element of PhotoSwipe. Must have class pswp. &#45;&#45;> -->
+<!--     <div class="pswp" tabindex="&#45;1" role="dialog" aria&#45;hidden="true"> -->
+<!--  -->
+<!--         <!&#45;&#45; Background of PhotoSwipe. -->
+<!--              It's a separate element as animating opacity is faster than rgba(). &#45;&#45;> -->
+<!--         <div class="pswp__bg"></div> -->
+<!--  -->
+<!--         <!&#45;&#45; Slides wrapper with overflow:hidden. &#45;&#45;> -->
+<!--         <div class="pswp__scroll&#45;wrap"> -->
+<!--  -->
+<!--             <!&#45;&#45; Container that holds slides. -->
+<!--                 PhotoSwipe keeps only 3 of them in the DOM to save memory. -->
+<!--                 Don't modify these 3 pswp__item elements, data is added later on. &#45;&#45;> -->
+<!--             <div class="pswp__container"> -->
+<!--                 <div class="pswp__item"></div> -->
+<!--                 <div class="pswp__item"></div> -->
+<!--                 <div class="pswp__item"></div> -->
+<!--             </div> -->
+<!--  -->
+<!--             <!&#45;&#45; Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. &#45;&#45;> -->
+<!--             <div class="pswp__ui pswp__ui&#45;&#45;hidden"> -->
+<!--  -->
+<!--                 <div class="pswp__top&#45;bar"> -->
+<!--  -->
+<!--                     <!&#45;&#45;  Controls are self&#45;explanatory. Order can be changed. &#45;&#45;> -->
+<!--  -->
+<!--                     <div class="pswp__counter"></div> -->
+<!--  -->
+<!--                     <button class="pswp__button pswp__button&#45;&#45;close" title="Close (Esc)"></button> -->
+<!--  -->
+<!--                     <button class="pswp__button pswp__button&#45;&#45;share" title="Share"></button> -->
+<!--  -->
+<!--                     <button class="pswp__button pswp__button&#45;&#45;fs" title="Toggle fullscreen"></button> -->
+<!--  -->
+<!--                     <button class="pswp__button pswp__button&#45;&#45;zoom" title="Zoom in/out"></button> -->
+<!--  -->
+<!--                     <!&#45;&#45; Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR &#45;&#45;> -->
+<!--                     <!&#45;&#45; element will get class pswp__preloader&#45;&#45;active when preloader is running &#45;&#45;> -->
+<!--                     <div class="pswp__preloader"> -->
+<!--                         <div class="pswp__preloader__icn"> -->
+<!--                           <div class="pswp__preloader__cut"> -->
+<!--                             <div class="pswp__preloader__donut"></div> -->
+<!--                           </div> -->
+<!--                         </div> -->
+<!--                     </div> -->
+<!--                 </div> -->
+<!--  -->
+<!--                 <div class="pswp__share&#45;modal pswp__share&#45;modal&#45;&#45;hidden pswp__single&#45;tap"> -->
+<!--                     <div class="pswp__share&#45;tooltip"></div> -->
+<!--                 </div> -->
+<!--  -->
+<!--                 <button class="pswp__button pswp__button&#45;&#45;arrow&#45;&#45;left" title="Previous (arrow left)"> -->
+<!--                 </button> -->
+<!--  -->
+<!--                 <button class="pswp__button pswp__button&#45;&#45;arrow&#45;&#45;right" title="Next (arrow right)"> -->
+<!--                 </button> -->
+<!--  -->
+<!--                 <div class="pswp__caption"> -->
+<!--                     <div class="pswp__caption__center"></div> -->
+<!--                 </div> -->
+<!--  -->
+<!--             </div> -->
+<!--  -->
+<!--         </div> -->
+<!--  -->
+<!--     </div> -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -179,10 +181,12 @@
     <script src="js/jquery.justifiedGallery.min.js"></script>
 
     <!-- Core JS file -->
-    <script src="js/photoswipe.min.js"></script>
+    <!-- <script src="js/photoswipe.min.js"></script> -->
 
     <!-- UI JS file -->
-    <script src="js/photoswipe-ui-default.min.js"></script>
+    <!-- <script src="js/photoswipe&#45;ui&#45;default.min.js"></script> -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
 
     <script>
 $("#lam-gallery").justifiedGallery({
@@ -200,68 +204,68 @@ $("#lam-gallery").justifiedGallery({
     }
 });
 
-// function runPhotoSwipe() {
-  var pswpElement = document.querySelectorAll('.pswp')[0];
-
-  // build items array
-  var items = [
-    {
-      src: 'img/2017-11-08T04:44:08+0100_3076.jpg',
-      w: 4024,
-      h: 4024
-    },
-    {
-      src: 'img/2017-11-08T05:14:58+0100_3077.jpg',
-      w: 3715,
-      h: 3715
-    },
-    {
-      src: 'img/2017-11-08T09:15:35+0100_3080.jpg',
-      w: 4904,
-      h: 3269
-    },
-    {
-      src: 'img/2017-11-09T02:55:42+0100_3096.jpg',
-      w: 3954,
-      h: 5913
-    },
-    {
-      src: 'img/2017-11-14T16:23:03+0100_3305.jpg',
-      w: 4024,
-      h: 6022
-    },
-    {
-      src: 'img/2017-11-16T13:34:11+0100_3424.jpg',
-      w: 2937,
-      h: 3916
-    },
-    {
-      src: 'img/2017-11-17T13:38:01+0100_3517.jpg',
-      w: 4519,
-      h: 3778
-    },
-    {
-      src: 'img/2017-11-17T15:31:43+0100_3542.jpg',
-      w: 3924,
-      h: 5868
-    },
-    {
-      src: 'img/2017-11-22T12:59:15+0100_3811.jpg',
-      w: 5190,
-      h: 3460
-    }
-  ];
-
-  // define options (if needed)
-  var options = {
-    // optionName: 'option value'
-    // for example:
-    index: 0 // start at first slide
-  };
-
-  var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
-  gallery.init();
-// }
+// // function runPhotoSwipe() {
+//   var pswpElement = document.querySelectorAll('.pswp')[0];
+//
+//   // build items array
+//   var items = [
+//     {
+//       src: 'img/2017-11-08T04:44:08+0100_3076.jpg',
+//       w: 4024,
+//       h: 4024
+//     },
+//     {
+//       src: 'img/2017-11-08T05:14:58+0100_3077.jpg',
+//       w: 3715,
+//       h: 3715
+//     },
+//     {
+//       src: 'img/2017-11-08T09:15:35+0100_3080.jpg',
+//       w: 4904,
+//       h: 3269
+//     },
+//     {
+//       src: 'img/2017-11-09T02:55:42+0100_3096.jpg',
+//       w: 3954,
+//       h: 5913
+//     },
+//     {
+//       src: 'img/2017-11-14T16:23:03+0100_3305.jpg',
+//       w: 4024,
+//       h: 6022
+//     },
+//     {
+//       src: 'img/2017-11-16T13:34:11+0100_3424.jpg',
+//       w: 2937,
+//       h: 3916
+//     },
+//     {
+//       src: 'img/2017-11-17T13:38:01+0100_3517.jpg',
+//       w: 4519,
+//       h: 3778
+//     },
+//     {
+//       src: 'img/2017-11-17T15:31:43+0100_3542.jpg',
+//       w: 3924,
+//       h: 5868
+//     },
+//     {
+//       src: 'img/2017-11-22T12:59:15+0100_3811.jpg',
+//       w: 5190,
+//       h: 3460
+//     }
+//   ];
+//
+//   // define options (if needed)
+//   var options = {
+//     // optionName: 'option value'
+//     // for example:
+//     index: 0 // start at first slide
+//   };
+//
+//   var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+//   gallery.init();
+// // }
     </script>
 
   </body>

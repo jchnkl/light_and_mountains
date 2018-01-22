@@ -10,6 +10,8 @@ thumb=$(basename $(echo ${origimg} | sed -e 's/\.jpg/_t\.jpg/'))
 
 title=$(exiftool -p '$Title' -Title ${origimg})
 
+caption=$(exiftool -p '$Description' -Description ${origimg})
+
 width=$(identify -format '%w' ${origimg})
 
 height=$(identify -format '%h' ${origimg})
@@ -34,7 +36,9 @@ cat << EOF
 {
   src: '${origimg}',
   w: ${width},
-  h: ${height}
+  h: ${height},
+  title: ${title},
+  caption: ${caption}
 }
 EOF
 }

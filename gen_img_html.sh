@@ -10,18 +10,33 @@ thumb=$(basename $(echo ${origimg} | sed -e 's/\.jpg/_t\.jpg/'))
 
 title=$(exiftool -p '$Title' -Title ${origimg})
 
+width=$(identify -format '%w' ${origimg})
+
+height=$(identify -format '%h' ${origimg})
+
 geom=$(identify -format 'height="%h" width="%w"' ${thumbdir}/${thumb})
 
 if [ ! -e ${thumbdir}/${thumb} ]; then
     exit 1
 fi
 
+function html() {
 cat << EOF
-<a href="img/${origimg}">
+<a href="${origimg}">
 <img alt="${title}"
-     src="img/tns/${img}" ${geom}/>
+     src="${thumbdir}/${img}" ${geom}/>
 </a>
 EOF
+}
 
+function json() {
+cat << EOF
+{
+  src: '${origimg}',
+  w: ${width},
+  h: ${height}
+}
+EOF
+}
 
-# echo -e "<a href=\"img/${origimg}\">\n<img alt=\"${title}\"\n    src=\"img/tns/${img}\" ${geom}/>\n</a>"
+json

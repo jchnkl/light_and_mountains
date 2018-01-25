@@ -103,7 +103,8 @@
     <script src="js/jquery.justifiedGallery.min.js"></script>
 
     <script>
-$("#lam-gallery").justifiedGallery({
+$(".lam-gallery").justifiedGallery({
+    selector: 'figure, div:not(.spinner)',
     margins: 3,
     rowHeight: 240,
     cssAnimation: false,

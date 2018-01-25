@@ -25,6 +25,8 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    {% block pswp_css_inc %}{% endblock %}
+
   </head>
   <body>
 
@@ -52,48 +54,17 @@
 
     <div class="container lam-content">
 
-        <div id="lam-gallery" >
+        <div class="lam-gallery">
 
-        <a data-fancybox="gallery" href="img/2017-11-08T04:44:08+0100_3076.jpg">
-        <img alt="The Village"
-            src="img/tns/2017-11-08T04:44:08+0100_3076.jpg" height="100" width="100"/>
-        </a>
-        <a data-fancybox="gallery" href="img/2017-11-08T05:14:58+0100_3077.jpg">
-        <img alt="The river, the valley & the mountain"
-            src="img/tns/2017-11-08T05:14:58+0100_3077.jpg" height="100" width="100"/>
-        </a>
-        <a data-fancybox="gallery" href="img/2017-11-08T09:15:35+0100_3080.jpg">
-        <img alt="Grazing Horses"
-            src="img/tns/2017-11-08T09:15:35+0100_3080.jpg" height="100" width="150"/>
-        </a>
-        <a data-fancybox="gallery" href="img/2017-11-09T02:55:42+0100_3096.jpg">
-        <img alt="First light"
-            src="img/tns/2017-11-09T02:55:42+0100_3096.jpg" height="100" width="67"/>
-        </a>
-        <a data-fancybox="gallery" href="img/2017-11-14T16:23:03+0100_3305.jpg">
-        <img alt=""
-            src="img/tns/2017-11-14T16:23:03+0100_3305.jpg" height="100" width="67"/>
-        </a>
-        <a data-fancybox="gallery" href="img/2017-11-16T13:34:11+0100_3424.jpg">
-        <img alt=""
-            src="img/tns/2017-11-16T13:34:11+0100_3424.jpg" height="100" width="75"/>
-        </a>
-        <a data-fancybox="gallery" href="img/2017-11-17T13:38:01+0100_3517.jpg">
-        <img alt=""
-            src="img/tns/2017-11-17T13:38:01+0100_3517.jpg" height="100" width="120"/>
-        </a>
-        <a data-fancybox="gallery" href="img/2017-11-17T15:31:43+0100_3542.jpg">
-        <img alt="The Milky Way over Annapurna South"
-            src="img/tns/2017-11-17T15:31:43+0100_3542.jpg" height="100" width="67"/>
-        </a>
-        <a data-fancybox="gallery" href="img/2017-11-22T12:59:15+0100_3811.jpg">
-        <img alt="The Buddhist stupa of Boudhanath glowing in the setting sun"
-            src="img/tns/2017-11-22T12:59:15+0100_3811.jpg" height="100" width="150"/>
-        </a>
+            {% autoescape false %}
+            {{ gallery }}
+            {% endautoescape %}
 
         </div>
 
     </div>
+
+    {% block pswp_html_inc %}{% endblock %}
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -101,6 +72,8 @@
     <script src="js/bootstrap.min.js"></script>
 
     <script src="js/jquery.justifiedGallery.min.js"></script>
+
+    {% block pswp_js_inc %}{% endblock %}
 
     <script>
 $(".lam-gallery").justifiedGallery({
@@ -118,6 +91,7 @@ $(".lam-gallery").justifiedGallery({
         1024 : '_b'
     }
 });
+{% block pswp_js %}{% endblock %}
     </script>
 
   </body>

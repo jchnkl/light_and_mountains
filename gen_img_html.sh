@@ -1,46 +1,74 @@
-#!/bin/sh
+#!/bin/bash
 
-imgdir=$1
+# arg=$1
 
-thumbdir=$2
+# if [ ! -e ${thumbdir}/${thumb} ]; then
+#     exit 1
+# fi
 
-origimg=$3
+# web dir
+w_dir=$1; shift
 
-thumb=$(basename $(echo ${origimg} | sed -e 's/\.jpg/_t\.jpg/'))
+# img dir
+i_dir=$1; shift
 
-title=$(exiftool -p '$Title' -Title ${origimg})
+# web thumb dir
+t_dir=$1; shift
 
-caption=$(exiftool -p '$Description' -Description ${origimg})
+suffix=$1; shift
 
-width=$(identify -format '%w' ${origimg})
+images=$@
 
-height=$(identify -format '%h' ${origimg})
+function gen_html() {
+  idx=$1; shift
 
-geom=$(identify -format 'height="%h" width="%w"' ${thumbdir}/${thumb})
+  i=$(basename $1); shift
 
-if [ ! -e ${thumbdir}/${thumb} ]; then
-    exit 1
-fi
+  t=$(basename $(echo ${i} | sed -e "s/\.${suffix}/_t\.${suffix}/"))
 
-function html() {
+  title=$(exiftool -p '$Title' -Title ${i_dir}/${i})
+
+  caption=$(exiftool -p '$Description' -Description ${i_dir}/${i})
+
+  i_width=$(identify -format '%w' ${i_dir}/${i})
+
+  i_height=$(identify -format '%h' ${i_dir}/${i})
+
+  t_width=$(identify -format '%w' ${t_dir}/${t})
+
+  t_height=$(identify -format '%h' ${t_dir}/${t})
+
 cat << EOF
-<a href="${origimg}">
-<img alt="${title}"
-     src="${thumbdir}/${img}" ${geom}/>
-</a>
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <a href="${w_dir}/${i}" itemprop="contentUrl" data-size="${i_width}x${i_height}" data-index="${idx}">
+      <img src="${t_dir}/${t}" width="${t_width}" height="${t_height}" itemprop="thumbnail" alt="${title}"/>
+    </a>
+  </figure>
 EOF
 }
 
-function json() {
-cat << EOF
-{
-  src: '${origimg}',
-  w: ${width},
-  h: ${height},
-  title: ${title},
-  caption: ${caption}
-}
-EOF
-}
+idx=0
+for img in ${images}; do
+  gen_html ${idx} ${img}
+  idx=$(($idx+1))
+done
 
-json
+
+
+# function gen_json() {
+# cat << EOF
+# {
+#   src: '${origimg}',
+#   w: ${width},
+#   h: ${height},
+#   title: ${title},
+#   caption: ${caption}
+# }
+# EOF
+# }
+
+# if [ $arg = 'html' ]; then
+#     gen_html
+# else
+#     gen_json
+# fi

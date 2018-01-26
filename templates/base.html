@@ -79,7 +79,6 @@
 $(document).ready(function() {
 
   function initJustifiedGallery() {
-    console.log('initJustifiedGallery()');
     $("#lam-gallery").justifiedGallery({
         selector: 'figure, div:not(.spinner)',
         margins: 3,
@@ -109,20 +108,15 @@ $(document).ready(function() {
 
     for (var i = start; i < start + n; ++i) {
 
-      console.log('i - start: ' + (i - start));
-
       url = 'gallery/img_' + ("0000" + i).slice(-4) + '.html';
       promises.push($.ajax(url))
 
 
     }
 
-    console.log("promises.length = " + promises.length);
     $.when.apply($, promises).then(function() {
       results = arguments;
-      console.log("DONE", this, results);
       for (idx in arguments) {
-        console.log("result: " + arguments[idx]);
         $('#lam-gallery').append(arguments[idx][0]);
       }
       initJustifiedGallery();

@@ -119,14 +119,7 @@ $(document).ready(function() {
 
   $(window).scroll(function() {
     if ($(window).scrollTop() + $(window).height() == $(document).height()) {
-      var end = lam_index + 5;
-
-      for (; lam_index < end; ++lam_index) {
-        $("<div></div>").load('gallery/img_' + ("0000" + lam_index).slice(-4) + '.html', function() {
-              $("#lam-gallery").append($(this).html());
-              $('#lam-gallery').justifiedGallery('norewind');
-        });
-      }
+      lam_index = loadImages(lam_index, 10);
     }
   });
 

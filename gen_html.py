@@ -9,8 +9,4 @@ env = Environment(
 
 template = env.get_template('pswp.html')
 
-gallery = open('gallery.html')
-
-print(template.render(gallery = gallery.read()))
-
-gallery.close()
+print(template.render())

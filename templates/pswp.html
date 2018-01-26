@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block pswp_js %}
-$('.lam-gallery').each( function() {
+$('#lam-gallery').each( function() {
     var $pic     = $(this),
         getItems = function() {
             var items = [];
@@ -25,17 +25,16 @@ $('.lam-gallery').each( function() {
     var items = getItems();
 
     var $pswp = $('.pswp')[0];
-    // $pic.on('click', 'a', function(event) {
     $pic.on('click', 'figure', function(event) {
         event.preventDefault();
-        
+
         var $index = $(this).index();
         var options = {
             index: $index,
             bgOpacity: 0.7,
             showHideOpacity: true
         }
-        
+
         // Initialize PhotoSwipe
         var lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, items, options);
         lightBox.init();

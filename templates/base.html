@@ -97,21 +97,11 @@ $(document).ready(function() {
   }
 
   function loadImages(start, n) {
-
-    var deferreds = [];
-
-    for (var i = 0; i < n; ++i) {
-      deferreds.push($.Deferred());
-    }
-
     var promises = [];
 
     for (var i = start; i < start + n; ++i) {
-
       url = 'gallery/img_' + ("0000" + i).slice(-4) + '.html';
       promises.push($.ajax(url))
-
-
     }
 
     $.when.apply($, promises).then(function() {

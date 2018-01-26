@@ -1,6 +1,6 @@
 all: index.html gallery.html
 
-index.html: gen_html.py gallery.html
+index.html: gen_html.py gallery.html templates/base.html templates/pswp.html
 	./gen_html.py > index.html
 
 gallery.html: gen_img_html.sh

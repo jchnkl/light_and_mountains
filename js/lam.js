@@ -56,7 +56,7 @@ $(document).ready(function() {
   var lam_index = loadImages(update_fn, 0, 20);
 
   $(window).scroll(function() {
-    if ($(window).scrollTop() + $(window).height() == $(document).height()) {
+    if ($(window).scrollTop() + $(window).height() >= 3 * $(document).height() / 4) {
       lam_index = loadImages(update_fn, lam_index, 10);
     }
   });

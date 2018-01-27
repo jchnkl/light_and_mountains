@@ -25,8 +25,6 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    {% block pswp_css_inc %}{% endblock %}
-
   </head>
   <body>
 
@@ -64,8 +62,6 @@
 
     </div>
 
-    {% block pswp_html_inc %}{% endblock %}
-
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -73,52 +69,8 @@
 
     <script src="js/jquery.justifiedGallery.min.js"></script>
 
-    {% block pswp_js_inc %}{% endblock %}
-
     <script>
 $(document).ready(function() {
-
-  function initPhotoSwipe() {
-    $('#lam-gallery').each( function() {
-        var $pic     = $(this),
-            getItems = function() {
-                var items = [];
-                $pic.find('a').each(function() {
-                    var $href   = $(this).attr('href'),
-                        $size   = $(this).data('size').split('x'),
-                        $width  = $size[0],
-                        $height = $size[1];
-
-                    var item = {
-                        src : $href,
-                        w   : $width,
-                        h   : $height
-                    }
-
-                    items.push(item);
-                });
-                return items;
-            }
-
-        var items = getItems();
-
-        var $pswp = $('.pswp')[0];
-        $pic.on('click', 'figure', function(event) {
-            event.preventDefault();
-
-            var $index = $(this).index();
-            var options = {
-                index: $index,
-                bgOpacity: 0.7,
-                showHideOpacity: true
-            }
-
-            // Initialize PhotoSwipe
-            var lightBox = new PhotoSwipe($pswp, PhotoSwipeUI_Default, items, options);
-            lightBox.init();
-        });
-    });
-  }
 
   function loadImages(start, n) {
     var promises = [];
@@ -134,7 +86,6 @@ $(document).ready(function() {
         $('#lam-gallery').append(arguments[idx][0]);
       }
       $('#lam-gallery').justifiedGallery('norewind');
-      initPhotoSwipe();
     });
 
     return start + n;

@@ -8,13 +8,11 @@ $(document).ready(function() {
       promises.push($.ajax(url))
     }
 
-		console.log("Before when...");
     $.when.apply($, promises).then(function() {
       results = arguments;
       for (idx in arguments) {
         $('#lam-gallery').append(arguments[idx][0]);
       }
-			console.log("When then done...");
 
       update_fn();
 
@@ -44,9 +42,7 @@ $(document).ready(function() {
     // initialize simpleLightbox
     var lightbox = $('#lam-gallery a').simpleLightbox();
 
-    console.log('initGallery()')
     return function() {
-      console.log('update_fn()')
       $('#lam-gallery').justifiedGallery('norewind');
       lightbox.destroy();
 			lightbox = $('#lam-gallery a').simpleLightbox();

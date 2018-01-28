@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
-  function loadImages(update_fn, start, n) {
+  function loadImages(loadMoreFn, start, n) {
+  // function loadImages(update_fn, start, n) {
     var promises = [];
 
     for (var i = start; i < start + n; ++i) {
@@ -14,15 +15,18 @@ $(document).ready(function() {
         $('#lam-gallery').append(arguments[idx][0]);
       }
 
-      update_fn();
+      // update_fn();
+      $('#lam-gallery').justifiedGallery('norewind');
+			$(window).scroll(loadMoreFn);
 
     });
 
+		console.log("return " + (start + n));
     return start + n;
   }
 
+	// initialize justifiedGallery
   function initGallery() {
-    // initialize justifiedGallery
     $("#lam-gallery").justifiedGallery({
         selector: 'figure, div:not(.spinner)',
         margins: 3,
@@ -38,22 +42,45 @@ $(document).ready(function() {
             1024 : '_b'
         }
     });
-
+		/*
     return function() {
       $('#lam-gallery').justifiedGallery('norewind');
     }
+		*/
   }
+
+	// var update_fn = initGallery();
 
   // start to build gallery
 
-  var update_fn = initGallery();
+	// function runGallery() {
 
-  var lam_index = loadImages(update_fn, 0, 20);
+	initGallery();
 
-  $(window).scroll(function() {
-    if ($(window).scrollTop() + $(window).height() >= 3 * $(document).height() / 4) {
-      lam_index = loadImages(update_fn, lam_index, 10);
-    }
-  });
+	var lam_index = loadImages(loadMore(0.9), 0, 20);
+
+	function loadMore(at) {
+		if ($(window).scrollTop() + $(window).height() >= at * $(document).height()) {
+			console.log("$(window).scrollTop(): " + $(window).scrollTop()); 
+			console.log("$(window).height(): " + $(window).height()); 
+			console.log("$(document).height(): " + $(document).height()); 
+			$(window).unbind('scroll');
+			lam_index = loadImages(loadMore(at), lam_index, 10);
+		}
+	}
+
+	/*
+		$(window).scroll(function() {
+			if ($(window).scrollTop() + $(window).height() == $(document).height() + 100) {
+			// if ($(window).scrollTop() + $(window).height() >= 0.9 * $(document).height()) {
+				console.log("$(window).scrollTop(): " + $(window).scrollTop()); 
+				console.log("$(window).height(): " + $(window).height()); 
+				console.log("$(document).height(): " + $(document).height()); 
+				$(window).unbind('scroll');
+				lam_index = loadImages(update_fn, lam_index, 10);
+			}
+		});
+	*/
+	// }
 
 });

@@ -3,6 +3,7 @@ body {
 }
 
 .lam-content {
+  width: 66%;
   color: #cacaca;
   /*padding: 40px 15px;*/
   text-align: center;

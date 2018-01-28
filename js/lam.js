@@ -39,13 +39,8 @@ $(document).ready(function() {
         }
     });
 
-    // initialize simpleLightbox
-    var lightbox = $('#lam-gallery a').simpleLightbox();
-
     return function() {
       $('#lam-gallery').justifiedGallery('norewind');
-      lightbox.destroy();
-			lightbox = $('#lam-gallery a').simpleLightbox();
     }
   }
 

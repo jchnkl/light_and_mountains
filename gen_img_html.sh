@@ -40,7 +40,7 @@ function gen_html() {
 
 cat > gallery/img_$(printf "%04d" ${idx}).html << EOF
   <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-    <a href="${w_dir}/${i}" itemprop="contentUrl" data-size="${i_width}x${i_height}" data-index="${idx}">
+    <a data-fancybox="lam-gallery" href="${w_dir}/${i}" itemprop="contentUrl" data-size="${i_width}x${i_height}" data-index="${idx}">
       <img src="${t_dir}/${t}" width="${t_width}" height="${t_height}" itemprop="thumbnail" alt="${title}"/>
     </a>
   </figure>

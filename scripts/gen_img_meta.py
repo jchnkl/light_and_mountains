@@ -58,6 +58,8 @@ for image in images:
             { 'idx': idx
             , 'i': i
             , 't': t
+            , 'w_dir': w_dir
+            , 't_dir': t_dir
             , 'title': title
             , 'caption': caption
             , 'i_width': i_width

@@ -24,6 +24,8 @@ for idx, d in enumerate(img_data):
         out_file.write(template.render( idx=d['idx']
                                       , i=d['i']
                                       , t=d['t']
+                                      , w_dir=d['w_dir']
+                                      , t_dir=d['t_dir']
                                       , title=d['title']
                                       , caption=d['caption']
                                       , i_width=d['i_width']

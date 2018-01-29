@@ -27,7 +27,7 @@ idx = 0
 
 for image in images:
     i = basename(image)
-    t = i.replace('.' + suffix, '_t.' + suffix)
+    t = i.replace('.' + suffix, '_z.' + suffix)
 
     metadata = ImageMetadata(i_dir + sep + i)
     metadata.read()

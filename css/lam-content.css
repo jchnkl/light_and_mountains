@@ -21,6 +21,109 @@ body {
     color: #cc6600;
 }
 
+/* .lam-gallery { */
+/*   column-count: 3; */
+/*   column-gap: 1em; */
+/* } */
+/*  */
+/* .lam-gallery-item { /* Masonry bricks or child elements */ */
+/*   background-color: #eee; */
+/*   display: inline-block; */
+/*   margin: 0 0 1em; */
+/*   width: 100%; */
+/* } */
+/*  */
+/* img, iframe { */
+/*   max-width: 100%; */
+/*   height: auto; */
+/*   display: block; */
+/* } */
+
+/* .lam-gallery { */
+/*   display: flex; */
+/*   flex-flow: row wrap; */
+/*   margin-left: -8px; /* Adjustment for the gutter */ */
+/* } */
+/*  */
+/* .lam-gallery-item { */
+/*   flex: auto; */
+/*   height: 250px; */
+/*   min-width: 150px; */
+/*   margin: 0 8px 8px 0; /* Some gutter */ */
+/* } */
+/*  */
+/* .lam-gallery-item { */
+/*   &:nth-child(4n+1){ */
+/*     width: 250px; */
+/*   } */
+/*   &:nth-child(4n+2){ */
+/*     width: 325px; */
+/*   } */
+/*   &:nth-child(4n+3){ */
+/*     width: 180px; */
+/*   } */
+/*   &:nth-child(4n+4){ */
+/*     width: 380px; */
+/*   } */
+/* } */
+
+
+/* /* fluid 5 columns */ */
+/* .lam-gallery-sizer, */
+/* .lam-gallery-item { */
+/*   width: 33%; */
+/*   background-color: #ff0000; */
+/*   /* float: left; */ */
+/*   /* width: 150px;  */ */
+/*   /* height: 150px; */ */
+/* } */
+
+* { box-sizing: border-box; }
+
+/* ---- grid ---- */
+
+.lam-gallery {
+  background: #DDD;
+}
+
+/* clear fix */
+.lam-gallery:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+/* ---- .element-item ---- */
+
+/* 5 columns, percentage width */
+.lam-gallery-item,
+.lam-gallery-sizer {
+  width: 20%;
+}
+
+.lam-gallery-item {
+  float: left;
+  height: 100px;
+  background: #0D8;
+  border: 2px solid #333;
+  border-color: hsla(0, 0%, 0%, 0.7);
+}
+
+.lam-gallery-item--width2 { width: 40%; }
+.lam-gallery-item--height2 { height: 200px; }
+
+/* 2 columns */
+/* .lam-gallery-item--width2 { width: 33%; } */
+
+/* .grid-item { */
+/*   float: left; */
+/* } */
+
+/* .lam-gallery-item img { */
+/*   display: block; */
+/*   max-width: 100%; */
+/* } */
+
 /*
 .navbar-lam {
     color: #ff0000;

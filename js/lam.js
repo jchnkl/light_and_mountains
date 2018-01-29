@@ -16,12 +16,57 @@ function handleImages(promises, img_idx) {
   $.when.apply($, promises).then(function() {
     results = arguments;
     for (idx in arguments) {
-      $('#lam-gallery').append(arguments[idx][0]);
+      $('.lam-gallery').append(arguments[idx][0]);
     }
 
-    $('#lam-gallery').justifiedGallery('norewind');
+    // $('.lam-gallery').justifiedGallery('norewind');
     // console.log("handleImages(..): cbFn");
     // cbFn(img_idx);
+
+  // console.log("handleImages(..) -> when callback: call isotope");
+
+  // $('.lam-gallery').imagesLoaded().progress(function() {
+  //   $('.lam-gallery').isotope({
+  //     // options
+  //     itemSelector: '.lam-gallery-item',
+  //     layoutMode: 'masonry',
+  //     percentPosition: true,
+  //     masonry: {
+  //       // use element for option
+  //       columnWidth: '.lam-gallery-sizer'
+  //     }
+  //   });
+  // });
+
+  // $lam_gallery.isotope('masonry');
+
+    // // init Isotope
+    // var $grid = $('.lam-gallery').isotope({
+    //   itemSelector: '.lam-gallery-item',
+    //   percentPosition: true,
+    //   masonry: {
+    //     columnWidth: '.lam-gallery-sizer'
+    //   }
+    // });
+
+    // // layout Isotope after each image loads
+    // $grid.imagesLoaded().progress( function() {
+      // $grid.isotope('layout');
+    // });
+
+    // imagesLoaded('.lam-gallery', function() {
+    //   // images have loaded
+    //   $grid.isotope('layout');
+    // });
+
+    var $grid = $('.lam-gallery').isotope({
+      itemSelector: '.lam-gallery-item',
+      layoutMode: 'packery',
+        packery: {
+          columnWidth: '.lam-gallery-sizer'
+        },
+        percentPosition: true
+    });
 
   });
 }
@@ -45,7 +90,7 @@ function scrollEventHandler() {
 
 // initialize justifiedGallery
 function initGallery() {
-  $("#lam-gallery").justifiedGallery({
+  $(".lam-gallery").justifiedGallery({
     selector: 'figure, div:not(.spinner)',
     margins: 3,
     rowHeight: 240,
@@ -67,8 +112,8 @@ function initGallery() {
 //   scrollEventHandler;
 // });
 
+/*
 $(document).ready(function() {
-
   scrollEventHandler();
 
   initGallery();
@@ -76,11 +121,13 @@ $(document).ready(function() {
   [img_idx, promises] = loadImages(0, 20);
 
   handleImages(promises, img_idx);
+});
+*/
 
   // updateFn(20)
 
   // handleImages(promises, function() {
-  //   $('#lam-gallery').justifiedGallery('norewind');
+  //   $('.lam-gallery').justifiedGallery('norewind');
   // });
 
   // handleImages(updateFn, promises);
@@ -121,4 +168,12 @@ $(document).ready(function() {
                 */
   // }
 
+$(document).ready(function() {
+  [idx, promises] = loadImages(0, 20);
+  handleImages(promises, idx);
+  // $('.lam-gallery').isotope({
+  //   // options
+  //   itemSelector: '.lam-gallery-item',
+  //   layoutMode: 'masonry'
+  // });
 });

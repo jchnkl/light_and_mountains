@@ -1,62 +1,83 @@
-$(document).ready(function() {
+function loadImages(start, n) {
+  console.log("loadImages(" + start + ", " + n + ")");
+  var promises = [];
 
-  function loadImages(start, n) {
-    var promises = [];
+  for (var i = start; i < start + n; ++i) {
+    url = 'gallery/img_' + ("0000" + i).slice(-4) + '.html';
+    promises.push($.ajax(url))
+  }
 
-    for (var i = start; i < start + n; ++i) {
-      url = 'gallery/img_' + ("0000" + i).slice(-4) + '.html';
-      promises.push($.ajax(url))
+  return [start + n, promises];
+}
+
+function handleImages(promises, img_idx) {
+  console.log("handleImages(promises, " + img_idx + ", cbFn)");
+
+  $.when.apply($, promises).then(function() {
+    results = arguments;
+    for (idx in arguments) {
+      $('#lam-gallery').append(arguments[idx][0]);
     }
 
-    return [start + n, promises];
-  }
-
-  function handleImages(promises, idx, cbFn) {
-    $.when.apply($, promises).then(function() {
-      results = arguments;
-      for (idx in arguments) {
-        $('#lam-gallery').append(arguments[idx][0]);
-      }
-
-      cbFn(idx);
-    });
-  }
-
-  function updateFn(startIdx) {
     $('#lam-gallery').justifiedGallery('norewind');
-    $(window).scroll(function() {
-      if ($(window).scrollTop() + $(window).height() >= 0.9 * $(document).height()) {
-        $(window).unbind('scroll');
-        [idx, promises] = loadImages(startIdx, 10);
-        handleImages(promises, idx, updateFn);
-      }
-    });
-  }
+    // console.log("handleImages(..): cbFn");
+    // cbFn(img_idx);
 
-  // initialize justifiedGallery
-  function initGallery() {
-    $("#lam-gallery").justifiedGallery({
-      selector: 'figure, div:not(.spinner)',
-      margins: 3,
-      rowHeight: 240,
-      cssAnimation: false,
-      imagesAnimationDuration: 0,
-      waitThumbnailsLoad: false,
-      sizeRangeSuffixes: {
-        100  : '_t',
-        240  : '_m',
-        320  : '_n',
-        640  : '_z',
-        1024 : '_b'
-      }
-    });
-  }
+  });
+}
+
+function scrollEventHandler() {
+  console.log("scrollEventHandler");
+  // $(window).unbind('scroll');
+  $(window).on('scroll', function() {
+    if ($(window).scrollTop() + $(window).height() >= 0.8 * $(document).height()) {
+    console.log("$(window).scrollTop() + $(window).height() = " + ($(window).scrollTop() + $(window).height()));
+    console.log("0.8 * $(document).height() = " + 0.8 * $(document).height());
+    console.log("$(document).height() = " + $(document).height());
+      // if ($(window).scrollTop() + $(window).height() == 0.8 * $(document).height()) {
+      $(window).unbind('scroll');
+      [next_idx, promises] = loadImages(img_idx, 10);
+      handleImages(promises, next_idx);
+      // }
+    }
+  });
+}
+
+// initialize justifiedGallery
+function initGallery() {
+  $("#lam-gallery").justifiedGallery({
+    selector: 'figure, div:not(.spinner)',
+    margins: 3,
+    rowHeight: 240,
+    cssAnimation: false,
+    imagesAnimationDuration: 0,
+    waitThumbnailsLoad: false,
+    sizeRangeSuffixes: {
+      100  : '_t',
+      240  : '_m',
+      320  : '_n',
+      640  : '_z',
+      1024 : '_b'
+    }
+  });
+}
+
+// $(window).on("load", function() {
+//   console.log("$(window).on(load, ..)");
+//   scrollEventHandler;
+// });
+
+$(document).ready(function() {
+
+  scrollEventHandler();
 
   initGallery();
 
-  [idx, promises] = loadImages(0, 20);
+  [img_idx, promises] = loadImages(0, 20);
 
-  handleImages(promises, idx, updateFn);
+  handleImages(promises, img_idx);
+
+  // updateFn(20)
 
   // handleImages(promises, function() {
   //   $('#lam-gallery').justifiedGallery('norewind');

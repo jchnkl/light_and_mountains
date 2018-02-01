@@ -20,10 +20,14 @@
 # '''
 
 html_template = '''\
-<div class="lam-gallery-item lam-gallery-item--width2" >
-  <img src="{{t_dir}}/{{t}}" itemprop="thumbnail" alt="{{title}}"/>
+<div class="lam-gallery-item">
+  <div class="lam-gallery-item-content">
+    <img src="{{t_dir}}/{{t}}" itemprop="thumbnail" alt="{{title}}"/>
+  </div>
 </div>
 '''
+  # <div id="item-{{idx}}" style="background-color:{{color}}; width:{{t_width}}px; height:{{t_height}}px;">
+  # </div>
 
   # <img src="{{w_dir}}/{{i}}" alt="{{title}}"/>
 # <div style="background-color:#00ff00; width:{{inner_width}}px;
@@ -61,4 +65,5 @@ for idx, d in enumerate(img_data):
                                       , inner_height=d['t_height'] * 0.66
                                       , margin_t=(d['t_width'] - d['t_width'] * 0.66) / 2
                                       , margin_l=(d['t_height'] - d['t_height'] * 0.66) / 2
+                                      , color="#" + ("%02x" % (255-d['idx'])) + ("%02x" % (255-d['idx'])) + ("%02x" % (255-d['idx']))
                                       ))

@@ -59,13 +59,25 @@ function handleImages(promises, img_idx) {
     //   $grid.isotope('layout');
     // });
 
-    var $grid = $('.lam-gallery').isotope({
-      itemSelector: '.lam-gallery-item',
-      layoutMode: 'packery',
-        packery: {
-          columnWidth: '.lam-gallery-sizer'
-        },
-        percentPosition: true
+    // var $grid = $('.lam-gallery').isotope({
+    //   // itemSelector: '.lam-gallery-item',
+    //   layoutMode: 'packery',
+    //   percentPosition: true,
+    //   packery: {
+    //     gutter: 10,
+    //     columnWidth: '.lam-gallery-sizer'
+    //   }
+    // });
+
+    // $grid.imagesLoaded().progress(function() {
+    //   $grid.packery();
+    // });
+
+    // var grid = new Muuri('.lam-gallery');
+
+    var grid = new Muuri({
+      container: document.getElementsByClassName('lam-gallery')[0],
+      items: document.getElementsByClassName('lam-gallery-item')
     });
 
   });

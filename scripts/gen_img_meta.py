@@ -2,10 +2,13 @@
 
 from sys import argv
 from os.path import basename, sep
-from pyexiv2 import ImageMetadata
 from PIL import Image
 from json import dumps
 from jinja2 import Template
+
+import gi
+gi.require_version('GExiv2', '0.10')
+from gi.repository import GExiv2
 
 # web dir
 w_dir = argv[1]
@@ -29,16 +32,15 @@ for image in images:
     i = basename(image)
     t = i.replace('.' + suffix, '_m.' + suffix)
 
-    metadata = ImageMetadata(i_dir + sep + i)
-    metadata.read()
+    metadata = GExiv2.Metadata(i_dir + sep + i)
 
     try:
-        title = metadata['Xmp.dc.title'].value['x-default']
+        title = metadata['Xmp.dc.title'].replace('lang="x-default" ', '')
     except:
         title = None
 
     try:
-        caption = metadata['Exif.Image.ImageDescription'].value
+        caption = metadata['Exif.Image.ImageDescription']
     except:
         caption = None
 

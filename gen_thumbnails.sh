@@ -19,12 +19,12 @@ for suffix in t m n z c b h k; do
 
     thumb=$(basename $(echo ${img} | sed -e "s/\.jpg/_${suffix}\.jpg/"))
     if [ ! -e ${thumbdir}/${thumb} ]; then
-        convert -geometry x${sizes[${suffix}]} ${img} ${thumbdir}/${thumb}
+        convert -geometry ${sizes[${suffix}]}x ${img} ${thumbdir}/${thumb}
     fi
     if [ ${suffix} = t ]; then
         pushd ${thumbdir}
-	ln -s ${thumb} $(basename ${img})
-	popd
+        ln -s ${thumb} $(basename ${img})
+        popd
     fi
 
 done

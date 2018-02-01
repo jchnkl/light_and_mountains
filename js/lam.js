@@ -75,10 +75,10 @@ function handleImages(promises, img_idx) {
 
     // var grid = new Muuri('.lam-gallery');
 
-    var grid = new Muuri({
-      container: document.getElementsByClassName('lam-gallery')[0],
-      items: document.getElementsByClassName('lam-gallery-item')
-    });
+    // var grid = new Muuri({
+    //   container: document.getElementsByClassName('lam-gallery')[0],
+    //   items: document.getElementsByClassName('lam-gallery-item')
+    // });
 
   });
 }

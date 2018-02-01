@@ -19,13 +19,26 @@
 # </div>
 # '''
 
+# html_template = '''\
+# <div class="grid-item grid-item--width{{rating}}">
+# <figure class="lam-gallery-item" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+# <a data-fancybox="lam-gallery" href="{{w_dir}}/{{i}}" itemprop="contentUrl"
+#         data-size="{{i_width}}x{{i_height}}" data-index="{{idx}}">
+#   <img src="{{t_dir}}/{{t}}" width="{{t_width}}" height="{{t_height}}" itemprop="thumbnail" alt="{{title}}"/>
+# </a>
+# </figure>
+# </div>
+# '''
+
 html_template = '''\
-<div class="lam-gallery-item">
-  <div class="lam-gallery-item-content">
-    <img src="{{t_dir}}/{{t}}" itemprop="thumbnail" alt="{{title}}"/>
-  </div>
+<div class="grid-item grid-item--width{{rating}}">
+  <img src="{{t_dir}}/{{t}}" width="{{t_width}}" height="{{t_height}}" itemprop="thumbnail" alt="{{title}}"/>
 </div>
 '''
+
+# <div class="lam-gallery-item">
+#     <img src="{{t_dir}}/{{t}}" itemprop="thumbnail" alt="{{title}}"/>
+# </div>
   # <div id="item-{{idx}}" style="background-color:{{color}}; width:{{t_width}}px; height:{{t_height}}px;">
   # </div>
 
@@ -55,8 +68,9 @@ for idx, d in enumerate(img_data):
                                       , t=d['t']
                                       , w_dir=d['w_dir']
                                       , t_dir=d['t_dir']
-                                      , title=d['title']
-                                      , caption=d['caption']
+                                      , title=d['exif']['title']
+                                      , caption=d['exif']['caption']
+                                      , rating=d['exif']['rating']
                                       , i_width=d['i_width']
                                       , i_height=d['i_height']
                                       , t_width=d['t_width']

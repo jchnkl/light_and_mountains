@@ -10,14 +10,40 @@ function loadImages(start, n) {
   return [start + n, promises];
 }
 
+function imagesLoadedCallback() {
+  console.log("imagesLoadedCallback()");
+  var $grid = $('.grid').masonry({
+    // set itemSelector so .grid-sizer is not used in layout
+    itemSelector: '.grid-item',
+    // use element for option
+    columnWidth: '.grid-sizer',
+    percentPosition: true
+  })
+
+  $grid.imagesLoaded('.grid').progress( function() {
+    $grid.masonry('layout');
+  });
+
+  // $grid.imagesLoaded('.grid', function() {
+  //   // images have loaded
+  //   $grid.masonry('layout');
+  // });
+
+}
+
 function handleImages(promises, img_idx) {
   console.log("handleImages(promises, " + img_idx + ", cbFn)");
 
   $.when.apply($, promises).then(function() {
     results = arguments;
     for (idx in arguments) {
-      $('.lam-gallery').append(arguments[idx][0]);
+      $('.grid').append(arguments[idx][0]);
     }
+
+    imagesLoadedCallback();
+
+  });
+}
 
     // $('.lam-gallery').justifiedGallery('norewind');
     // console.log("handleImages(..): cbFn");
@@ -79,9 +105,6 @@ function handleImages(promises, img_idx) {
     //   container: document.getElementsByClassName('lam-gallery')[0],
     //   items: document.getElementsByClassName('lam-gallery-item')
     // });
-
-  });
-}
 
 function scrollEventHandler() {
   console.log("scrollEventHandler");

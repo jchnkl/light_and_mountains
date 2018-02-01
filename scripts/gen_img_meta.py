@@ -30,7 +30,7 @@ idx = 0
 
 for image in images:
     i = basename(image)
-    t = i.replace('.' + suffix, '_m.' + suffix)
+    t = i.replace('.' + suffix, '_b.' + suffix)
 
     metadata = GExiv2.Metadata(i_dir + sep + i)
 
@@ -44,6 +44,11 @@ for image in images:
     except:
         caption = None
 
+    try:
+        rating = metadata['Xmp.xmp.Rating']
+    except:
+        rating = None
+
     img = Image.open(i_dir + sep + i)
 
     i_width = img.size[0]
@@ -56,18 +61,22 @@ for image in images:
     t_width = img.size[0]
     t_height = img.size[1]
 
+    exif = { 'title': title
+           , 'caption': caption
+           , 'rating': rating
+           }
+
     img_data.append(
             { 'idx': idx
             , 'i': i
             , 't': t
             , 'w_dir': w_dir
             , 't_dir': t_dir
-            , 'title': title
-            , 'caption': caption
             , 'i_width': i_width
             , 'i_height': i_height
             , 't_width': t_width
             , 't_height': t_height
+            , 'exif': exif
             }
         )
 

@@ -1,49 +1,53 @@
-function loadImages(start, n) {
-  console.log("loadImages(" + start + ", " + n + ")");
-  var promises = [];
+var site = {
+  loadImages: function(urls) {
+    console.log("loadImages(" + start + ", " + n + ")");
+    var promises = [];
 
-  for (var i = start; i < start + n; ++i) {
-    url = 'gallery/img_' + ("0000" + i).slice(-4) + '.html';
-    promises.push($.ajax(url))
-  }
+    for (var i = start; i < start + n; ++i) {
+      url = 'gallery/img_' + ("0000" + i).slice(-4) + '.html';
+      promises.push($.ajax(url))
+    }
 
-  return [start + n, promises];
-}
+    return [start + n, promises];
+  },
+
+  withPromises: function(promises, withResults) {
+    console.log("withPromises(promises)");
+
+    $.when.apply($, promises).then(function() {
+      results = arguments;
+      for (idx in arguments) {
+        results.push(arguments[idx]);
+      }
+
+      //   $('.grid').append(arguments[idx][0]);
+      // }
+
+      withResults(results);
+    });
+  },
 
 function imagesLoadedCallback() {
   console.log("imagesLoadedCallback()");
-  var $grid = $('.grid').masonry({
-    // set itemSelector so .grid-sizer is not used in layout
-    itemSelector: '.grid-item',
-    // use element for option
-    columnWidth: '.grid-sizer',
-    percentPosition: true
-  })
-
-  $grid.imagesLoaded('.grid').progress( function() {
-    $grid.masonry('layout');
-  });
-
-  // $grid.imagesLoaded('.grid', function() {
-  //   // images have loaded
-  //   $grid.masonry('layout');
-  // });
-
+//   var $grid = $('.grid').masonry({
+//     // set itemSelector so .grid-sizer is not used in layout
+//     itemSelector: '.grid-item',
+//     // use element for option
+//     columnWidth: '.grid-sizer',
+//     percentPosition: true
+//   })
+//
+//   $grid.imagesLoaded('.grid').progress( function() {
+//     $grid.masonry('layout');
+//   });
+//
+//   // $grid.imagesLoaded('.grid', function() {
+//   //   // images have loaded
+//   //   $grid.masonry('layout');
+//   // });
+//
 }
 
-function handleImages(promises, img_idx) {
-  console.log("handleImages(promises, " + img_idx + ", cbFn)");
-
-  $.when.apply($, promises).then(function() {
-    results = arguments;
-    for (idx in arguments) {
-      $('.grid').append(arguments[idx][0]);
-    }
-
-    imagesLoadedCallback();
-
-  });
-}
 
     // $('.lam-gallery').justifiedGallery('norewind');
     // console.log("handleImages(..): cbFn");
@@ -211,4 +215,6 @@ $(document).ready(function() {
   //   itemSelector: '.lam-gallery-item',
   //   layoutMode: 'masonry'
   // });
+  var justifiedLayout = require('justified-layout');
+  console.log(justifiedLayout([1.33, 1, 0.65]));
 });

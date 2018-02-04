@@ -120,10 +120,10 @@ var Images = {
 
 // initialize justifiedGallery
 function initGallery() {
-  $('#lam-gallery').justifiedGallery({
+  $('#grid').justifiedGallery({
     selector: 'figure, div:not(.spinner)',
     margins: 3,
-    rowHeight: 240,
+    rowHeight: 320,
     cssAnimation: false,
     imagesAnimationDuration: 0,
     waitThumbnailsLoad: false,
@@ -244,33 +244,33 @@ $(document).ready(function() {
   // console.log(justifiedLayout([1.33, 1, 0.65]));
 
   var urlBuilder = function(idx) {
-      // return 'gallery/img_' + ("0000" + idx).slice(-4) + '.html';
-      return 'json/img_' + ("0000" + idx).slice(-4) + '.json';
+      return 'gallery/img_' + ("0000" + idx).slice(-4) + '.html';
+      // return 'json/img_' + ("0000" + idx).slice(-4) + '.json';
   }
 
   Images.loadMore(30, urlBuilder, function(results) {
 
-    results.forEach(function(result) {
-      // $('#grid').append(result);
-      $('#grid').append(toHtml(result[0]));
-    });
-
-    // var $grid = $('grid').imagesLoaded(function() {
-    //   $grid.masonry({
-    //     // options
-    //     itemSelector: '.grid-item',
-    //     columnWidth: 200
-    //   });
-    // });
-
-    var $grid = $('#grid').packery({
-      itemSelector: '.grid-item',
-      percentPosition: true
-    });
-
-    $grid.imagesLoaded('#grid', function() {
-      $grid.packery('layout');
-    });
+//     results.forEach(function(result) {
+//       // $('#grid').append(result);
+//       $('#grid').append(toHtml(result[0]));
+//     });
+//
+//     // var $grid = $('grid').imagesLoaded(function() {
+//     //   $grid.masonry({
+//     //     // options
+//     //     itemSelector: '.grid-item',
+//     //     columnWidth: 200
+//     //   });
+//     // });
+//
+//     var $grid = $('#grid').packery({
+//       itemSelector: '.grid-item',
+//       percentPosition: true
+//     });
+//
+//     $grid.imagesLoaded('#grid', function() {
+//       $grid.packery('layout');
+//     });
 
 //     // console.log(results);
 //
@@ -308,12 +308,12 @@ $(document).ready(function() {
 //       $('#grid').append(elem);
 //     }
 
-//     results.forEach(function(result) {
-//       $('#grid').append(result[0]);
-//       // $('#grid').append(toHtml(result[0]));
-//     });
-//
-//     initGallery();
+    results.forEach(function(result) {
+      $('#grid').append(result[0]);
+      // $('#grid').append(toHtml(result[0]));
+    });
+
+    initGallery();
 
     // $('#grid').justifiedGallery('norewind');
   });

@@ -250,63 +250,63 @@ $(document).ready(function() {
 
   Images.loadMore(30, urlBuilder, function(results) {
 
-//     results.forEach(function(result) {
-//       // $('#grid').append(result);
-//       $('#grid').append(toHtml(result[0]));
-//     });
-//
-//     // var $grid = $('grid').imagesLoaded(function() {
-//     //   $grid.masonry({
-//     //     // options
-//     //     itemSelector: '.grid-item',
-//     //     columnWidth: 200
-//     //   });
-//     // });
-//
-//     var $grid = $('#grid').packery({
-//       itemSelector: '.grid-item',
-//       percentPosition: true
-//     });
-//
-//     $grid.imagesLoaded('#grid', function() {
-//       $grid.packery('layout');
-//     });
-
-    // console.log(results);
-
-    aspects = []
     results.forEach(function(result) {
-      aspects.push(result[0]['i_width'] / result[0]['i_height']);
+      // $('#grid').append(result);
+      $('#grid').append(toHtml(result[0]));
     });
 
-    // console.log(aspects);
-
-    var justifiedLayout = require('justified-layout');
-    var geometries = justifiedLayout(aspects, {
-      // fullWidthBreakoutRowCadence: 2
-    });
-
-    // console.log(geometries);
-
-    // geometries.boxes.forEach(function(box) {
-    //   var elem =
-    //   `<div class="box" style="width: ${box.width}px; height: ${box.height}px;
-    //                            top: ${box.top}px; left: ${box.left}px"></div>`;
-    //   $('#grid').append(elem);
+    // var $grid = $('grid').imagesLoaded(function() {
+    //   $grid.masonry({
+    //     // options
+    //     itemSelector: '.grid-item',
+    //     columnWidth: 200
+    //   });
     // });
 
-    for (idx in geometries.boxes) {
-      var imgMeta = results[idx][0];
-      var t = imgMeta['t_dir'] + '/' + imgMeta['t'];
-      var img = '<img src="' + t + '"/>';
+    var $grid = $('#grid').packery({
+      itemSelector: '.grid-item',
+      percentPosition: true
+    });
 
-      var box = geometries.boxes[idx];
-      var style = `width: ${box.width}px; height: ${box.height}px;
-                   top: ${box.top}px; left: ${box.left}px`
-      var elem = `<div class="box" style="${style}">${img}</div>`;
+    $grid.imagesLoaded('#grid', function() {
+      $grid.packery('layout');
+    });
 
-      $('#grid').append(elem);
-    }
+//     // console.log(results);
+//
+//     aspects = []
+//     results.forEach(function(result) {
+//       aspects.push(result[0]['i_width'] / result[0]['i_height']);
+//     });
+//
+//     // console.log(aspects);
+//
+//     var justifiedLayout = require('justified-layout');
+//     var geometries = justifiedLayout(aspects, {
+//       // fullWidthBreakoutRowCadence: 2
+//     });
+//
+//     // console.log(geometries);
+//
+//     // geometries.boxes.forEach(function(box) {
+//     //   var elem =
+//     //   `<div class="box" style="width: ${box.width}px; height: ${box.height}px;
+//     //                            top: ${box.top}px; left: ${box.left}px"></div>`;
+//     //   $('#grid').append(elem);
+//     // });
+//
+//     for (idx in geometries.boxes) {
+//       var imgMeta = results[idx][0];
+//       var t = imgMeta['t_dir'] + '/' + imgMeta['t'];
+//       var img = '<img src="' + t + '"/>';
+//
+//       var box = geometries.boxes[idx];
+//       var style = `width: ${box.width}px; height: ${box.height}px;
+//                    top: ${box.top}px; left: ${box.left}px`
+//       var elem = `<div class="box" style="${style}">${img}</div>`;
+//
+//       $('#grid').append(elem);
+//     }
 
 //     results.forEach(function(result) {
 //       $('#grid').append(result[0]);

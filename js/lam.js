@@ -209,12 +209,13 @@ function toHtml(imgMeta) {
 
   var div = '<div class="grid-item">' + img + '</div>';
 
-  // // if (imgMeta['idx'] == 2) {
-  // if (imgMeta['exif']['rating'] == 5) {
-  //   div = '<div class="grid-item grid-item--width5">' + img + '</div>';
-  // // } else if (imgMeta['exif']['rating'] == 4) {
-  // //   div = '<div class="grid-item grid-item--width4">' + img + '</div>';
-  // }
+  if (imgMeta['i_width'] > imgMeta['i_height']) {
+    div = '<div class="grid-item grid-item--aspect-fix">' + img + '</div>';
+  // } else if (imgMeta['exif']['rating'] == 5) {
+  //   div = '<div class="grid-item grid-item--5star">' + img + '</div>';
+  // } else if (imgMeta['exif']['rating'] == 4) {
+  //   div = '<div class="grid-item grid-item--width4">' + img + '</div>';
+  }
 
   html = div
 

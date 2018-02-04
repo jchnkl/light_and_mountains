@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 
-# html_template = '''\
-# <figure class="lam-gallery-item" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-# <a data-fancybox="lam-gallery" href="{{w_dir}}/{{i}}" itemprop="contentUrl"
-#         data-size="{{i_width}}x{{i_height}}" data-index="{{idx}}">
-#   <img src="{{t_dir}}/{{t}}" width="{{t_width}}" height="{{t_height}}" itemprop="thumbnail" alt="{{title}}"/>
-# </a>
-# </figure>
-# '''
+html_template = '''\
+<figure class="lam-gallery-item" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+<a data-fancybox="lam-gallery" href="{{w_dir}}/{{i}}" itemprop="contentUrl"
+        data-size="{{i_width}}x{{i_height}}" data-index="{{idx}}">
+  <img src="{{t_dir}}/{{t}}" width="{{t_width}}" height="{{t_height}}" itemprop="thumbnail" alt="{{title}}"/>
+</a>
+</figure>
+'''
 
 # <div class="lam-gallery-item" style="width:{{t_width}}px; height:{{t_height}}px;">
 
@@ -30,11 +30,11 @@
 # </div>
 # '''
 
-html_template = '''\
-<div class="grid-item grid-item--width{{rating}}">
-  <img src="{{t_dir}}/{{t}}" width="{{t_width}}" height="{{t_height}}" itemprop="thumbnail" alt="{{title}}"/>
-</div>
-'''
+# html_template = '''\
+# <div class="grid-item grid-item--width{{rating}}">
+#   <img src="{{t_dir}}/{{t}}" width="{{t_width}}" height="{{t_height}}" itemprop="thumbnail" alt="{{title}}"/>
+# </div>
+# '''
 
 # <div class="lam-gallery-item">
 #     <img src="{{t_dir}}/{{t}}" itemprop="thumbnail" alt="{{title}}"/>

@@ -30,7 +30,7 @@ idx = 0
 
 for image in images:
     i = basename(image)
-    t = i.replace('.' + suffix, '_b.' + suffix)
+    t = i.replace('.' + suffix, '_t.' + suffix)
 
     metadata = GExiv2.Metadata(i_dir + sep + i)
 
@@ -74,8 +74,10 @@ for image in images:
             , 't_dir': t_dir
             , 'i_width': i_width
             , 'i_height': i_height
+            , 'i_aspect': i_width / i_height
             , 't_width': t_width
             , 't_height': t_height
+            , 't_aspect': t_width / t_height
             , 'exif': exif
             }
         )

@@ -9,58 +9,36 @@
 # </figure>
 # '''
 
-# packery
-html_template = '''\
-<figure class="grid-item {{aspect_fix}}" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-<a data-fancybox="grid" href="{{w_dir}}/{{i}}" itemprop="contentUrl"
-        data-size="{{i_width}}x{{i_height}}" data-index="{{idx}}">
-  <img src="{{t_dir}}/{{t}}" width="{{t_width}}" height="{{t_height}}" itemprop="thumbnail" alt="{{title}}"/>
-</a>
-</figure>
-'''
-# <div class="grid-item {{aspect_fix}}">
-# </div>
-
-# <div class="lam-gallery-item" style="width:{{t_width}}px; height:{{t_height}}px;">
-
+# # packery
 # html_template = '''\
-# <div class="lam-gallery-item" style="width:{{t_width}}px; height:{{t_height}}px;">
-# <div style="background-color:#00ff00; width:{{inner_width}}px;
-#   height:{{inner_height}}px; margin: {{margin_l}}px {{margin_t}}px;">
-# </div>
-# </div>
-# '''
-
-# html_template = '''\
-# <div class="grid-item grid-item--width{{rating}}">
-# <figure class="lam-gallery-item" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-# <a data-fancybox="lam-gallery" href="{{w_dir}}/{{i}}" itemprop="contentUrl"
+# <figure class="grid-item {{aspect_fix}}" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+# <a data-fancybox="grid" href="{{w_dir}}/{{i}}" itemprop="contentUrl"
 #         data-size="{{i_width}}x{{i_height}}" data-index="{{idx}}">
 #   <img src="{{t_dir}}/{{t}}" width="{{t_width}}" height="{{t_height}}" itemprop="thumbnail" alt="{{title}}"/>
 # </a>
 # </figure>
-# </div>
 # '''
 
-# html_template = '''\
-# <div class="grid-item grid-item--width{{rating}}">
-#   <img src="{{t_dir}}/{{t}}" width="{{t_width}}" height="{{t_height}}" itemprop="thumbnail" alt="{{title}}"/>
-# </div>
-# '''
+#   var i = imgMeta['w_dir'] + '/' + imgMeta['i'];
+#   var img = '<img src="' + i + '"/>';
+#
+#   // var t = imgMeta['t_dir'] + '/' + imgMeta['t'];
+#   // var img = '<img src="' + t + '"/>';
+#
+#   var div = '<div class="grid-item">' + img + '</div>';
 
-# <div class="lam-gallery-item">
-#     <img src="{{t_dir}}/{{t}}" itemprop="thumbnail" alt="{{title}}"/>
+# packery
+# <div class="grid-item">
+html_template = '''\
+<figure class="grid-item {{grid_5}} {{grid_aspect}}" itemprop="associatedMedia"
+  itemscope itemtype="http://schema.org/ImageObject">
+    <a data-fancybox="grid" href="{{w_dir}}/{{i}}" itemprop="contentUrl"
+      data-size="{{i_width}}x{{i_height}}" data-index="{{idx}}">
+        <img src="{{t_dir}}/{{t}}" itemprop="thumbnail" alt="{{title}}"/>
+    </a>
+</figure>
+'''
 # </div>
-  # <div id="item-{{idx}}" style="background-color:{{color}}; width:{{t_width}}px; height:{{t_height}}px;">
-  # </div>
-
-  # <img src="{{w_dir}}/{{i}}" alt="{{title}}"/>
-# <div style="background-color:#00ff00; width:{{inner_width}}px;
-#   height:{{inner_height}}px; margin: {{margin_l}}px {{margin_t}}px;">
-# </div>
-
-  # <img src="{{t_dir}}/{{t}}" width="{{t_width}}" height="{{t_height}}" itemprop="thumbnail" alt="{{title}}"/>
-  # <img src="{{w_dir}}/{{i}}" alt="{{title}}"/>
 
 from os.path import sep
 from sys import argv, stdin
@@ -75,9 +53,15 @@ template = Template(html_template)
 
 for idx, d in enumerate(img_data):
     with open(out_dir + sep + 'img_' + '{0:04d}'.format(idx) + '.html', 'w') as out_file:
-        aspect_fix = ""
-        if d['i_width'] > d['i_height']:
-          aspect_fix = "grid-item--aspect-fix"
+
+        grid_5 = ""
+        grid_aspect = ""
+
+        if d['exif']['rating'] == "5":
+          grid_5 = "grid-item--5stars"
+        elif d['i_width'] > d['i_height']:
+          grid_aspect = "grid-item--aspect"
+
         out_file.write(template.render( idx=d['idx']
                                       , i=d['i']
                                       , t=d['t']
@@ -95,5 +79,6 @@ for idx, d in enumerate(img_data):
                                       , margin_t=(d['t_width'] - d['t_width'] * 0.66) / 2
                                       , margin_l=(d['t_height'] - d['t_height'] * 0.66) / 2
                                       , color="#" + ("%02x" % (255-d['idx'])) + ("%02x" % (255-d['idx'])) + ("%02x" % (255-d['idx']))
-                                      , aspect_fix=aspect_fix
+                                      , grid_aspect=grid_aspect
+                                      , grid_5=grid_5
                                       ))

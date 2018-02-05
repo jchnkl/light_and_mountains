@@ -254,7 +254,21 @@ $(document).ready(function() {
     results.forEach(function(result) {
       $('#grid').append(result[0]);
       // $('#grid').append(toHtml(result[0]));
+
     });
+
+    var $grid = $('#grid').packery({
+      itemSelector: '.grid-item',
+      percentPosition: true
+    });
+
+    $grid.imagesLoaded().progress( function() {
+      $grid.packery('layout');
+    });
+
+    // $grid.imagesLoaded('#grid', function() {
+    //   $grid.packery('layout');
+    // });
 
     // var $grid = $('grid').imagesLoaded(function() {
     //   $grid.masonry({
@@ -263,15 +277,6 @@ $(document).ready(function() {
     //     columnWidth: 200
     //   });
     // });
-
-    var $grid = $('#grid').packery({
-      itemSelector: '.grid-item',
-      percentPosition: true
-    });
-
-    $grid.imagesLoaded('#grid', function() {
-      $grid.packery('layout');
-    });
 
 //     // console.log(results);
 //

@@ -1,13 +1,25 @@
 #!/usr/bin/env python3
 
+# html_template = '''\
+# <figure class="lam-gallery-item" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+# <a data-fancybox="lam-gallery" href="{{w_dir}}/{{i}}" itemprop="contentUrl"
+#         data-size="{{i_width}}x{{i_height}}" data-index="{{idx}}">
+#   <img src="{{t_dir}}/{{t}}" width="{{t_width}}" height="{{t_height}}" itemprop="thumbnail" alt="{{title}}"/>
+# </a>
+# </figure>
+# '''
+
+# packery
 html_template = '''\
-<figure class="lam-gallery-item" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-<a data-fancybox="lam-gallery" href="{{w_dir}}/{{i}}" itemprop="contentUrl"
+<figure class="grid-item {{aspect_fix}}" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+<a data-fancybox="grid" href="{{w_dir}}/{{i}}" itemprop="contentUrl"
         data-size="{{i_width}}x{{i_height}}" data-index="{{idx}}">
   <img src="{{t_dir}}/{{t}}" width="{{t_width}}" height="{{t_height}}" itemprop="thumbnail" alt="{{title}}"/>
 </a>
 </figure>
 '''
+# <div class="grid-item {{aspect_fix}}">
+# </div>
 
 # <div class="lam-gallery-item" style="width:{{t_width}}px; height:{{t_height}}px;">
 
@@ -63,6 +75,9 @@ template = Template(html_template)
 
 for idx, d in enumerate(img_data):
     with open(out_dir + sep + 'img_' + '{0:04d}'.format(idx) + '.html', 'w') as out_file:
+        aspect_fix = ""
+        if d['i_width'] > d['i_height']:
+          aspect_fix = "grid-item--aspect-fix"
         out_file.write(template.render( idx=d['idx']
                                       , i=d['i']
                                       , t=d['t']
@@ -80,4 +95,5 @@ for idx, d in enumerate(img_data):
                                       , margin_t=(d['t_width'] - d['t_width'] * 0.66) / 2
                                       , margin_l=(d['t_height'] - d['t_height'] * 0.66) / 2
                                       , color="#" + ("%02x" % (255-d['idx'])) + ("%02x" % (255-d['idx'])) + ("%02x" % (255-d['idx']))
+                                      , aspect_fix=aspect_fix
                                       ))

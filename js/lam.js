@@ -245,15 +245,15 @@ $(document).ready(function() {
   // console.log(justifiedLayout([1.33, 1, 0.65]));
 
   var urlBuilder = function(idx) {
-      // return 'gallery/img_' + ("0000" + idx).slice(-4) + '.html';
-      return 'json/img_' + ("0000" + idx).slice(-4) + '.json';
+      return 'gallery/img_' + ("0000" + idx).slice(-4) + '.html';
+      // return 'json/img_' + ("0000" + idx).slice(-4) + '.json';
   }
 
   Images.loadMore(30, urlBuilder, function(results) {
 
     results.forEach(function(result) {
-      // $('#grid').append(result);
-      $('#grid').append(toHtml(result[0]));
+      $('#grid').append(result[0]);
+      // $('#grid').append(toHtml(result[0]));
     });
 
     // var $grid = $('grid').imagesLoaded(function() {

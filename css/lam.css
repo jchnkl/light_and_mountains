@@ -2,13 +2,6 @@ body {
   background-color: #212121;
 }
 
-/* img { */
-/*   max-width: 33.333%; */
-/*   max-height: 33.333%; */
-/*   /* max-height: 100%; */ */
-/*   /* object-fit: cover; */ */
-/* } */
-
 .lam-content {
   width: 66%;
   color: #cacaca;
@@ -28,349 +21,36 @@ body {
     color: #cc6600;
 }
 
-/* .box { */
-/*   position: absolute; */
-/*   background: yellowgreen; */
-/* } */
-
-/* .box img { */
-/*   display: block; */
-/*   max-width: 100%; */
-/* } */
-
-/* * { box-sizing: border-box; } */
-
-/* force scrollbar, prevents initial gap */
-/* html { overflow-y: scroll; } */
-
-/* .grid:after { */
-/*   content: ''; */
-/*   display: block; */
-/*   clear: both; */
-/* } */
-
 /* .grid-sizer, */
 .grid-item {
-  /* width: 33.333%; */
+  width: 33.333%;
   /* width: 20%; */
-  width: 25%;
+  /* width: 25%; */
   /* width: 10%; */
 }
 
-.grid-item--aspect {
-  /* width: 66.666%; */
-  width: 50%;
-}
-
-.grid-item--5stars {
-  /* width: 66.666%; */
-  width: 50%;
-}
-
-/* .grid-item { */
-/*   float: left; */
+/* .grid-item--aspect { */
+/* width: 66.666%; */
+/* width: 50%; */
+/*   width: 33.333%; */
 /* } */
 
-.grid-item figure, .grid-item img {
-/* .grid-item figure { */
+/* .grid-item--5stars { */
+/*   width: 66.666%; */
+/*   width: 50%; */
+/*   width: 33.333%; */
+/* } */
+
+/* img.grid-item, figure.grid-item { */
+.grid-item img {
   display: block;
+  /* width: 33.333%; */
   max-width: 100%;
   /* border: 2px solid #212121; */
   padding: 0.2em;
-  max-height: 100%;
-  /* object-fit: cover; */
+  /* max-height: 100%; */
+  object-fit: contain;
 }
-
-/* .grid-item img { */
-/*   display: block; */
-/*   max-width: 100%; */
-/*   /* border: 2px solid #212121; */ */
-/*   padding: 0.2em; */
-/*   max-height: 100%; */
-/*   /* object-fit: cover; */ */
-/* } */
-
-/* .grid-item { */
-/*   float: left; */
-/*   width: 100px; */
-/*   /* height: 100px; */ */
-/*   background: #0D8; */
-/*   border: 2px solid #333; */
-/*   border-color: hsla(0, 0%, 0%, 0.7); */
-/* } */
-
-/* 2 columns */
-/* .grid-item--width2 { width: 40%; } */
-
-/* .content { */
-/*   -webkit-column-count: 1; */
-/*   -webkit-column-gap: 0; */
-/*   -moz-column-count: 1; */
-/*   -moz-column-gap: 0; */
-/*   column-count: 1; */
-/*   column-gap: 0; */
-/* } */
-/*  */
-/* @media screen and (min-width:650px) { */
-/*   .content { */
-/*     -webkit-column-count: 2; */
-/*     -moz-column-count: 2; */
-/*     column-count: 2; */
-/*   } */
-/* } */
-/*  */
-/* @media screen and (min-width:960px) { */
-/*   .content { */
-/*     -webkit-column-count: 3; */
-/*     -moz-column-count: 3; */
-/*     column-count: 3; */
-/*   } */
-/* } */
-/*  */
-/* @media screen and (min-width:1200px) { */
-/*   .content { */
-/*     -webkit-column-count: 4; */
-/*     -moz-column-count: 4; */
-/*     column-count: 4; */
-/*     max-width:1460px; */
-/*   } */
-/* } */
-
-
-
-/* /* fluid 5 columns */ */
-/* .lam-gallery-sizer, */
-/* .lam-gallery-item { width: 33.333%; } */
-
-/* .lam-gallery { */
-/*   position: relative; */
-/* } */
-/* .lam-gallery-item { */
-/*   display: block; */
-/*   position: absolute; */
-/*   /* width: auto; */ */
-/*   /* height: auto; */ */
-/*   margin: 5px; */
-/*   z-index: 1; */
-/*   /* background: #000; */ */
-/*   /* color: #fff; */ */
-/* } */
-/* .item.muuri-item-dragging { */
-/*   z-index: 3; */
-/* } */
-/* .item.muuri-item-releasing { */
-/*   z-index: 2; */
-/* } */
-/* .item.muuri-item-hidden { */
-/*   z-index: 0; */
-/* } */
-/* .lam-gallery-item-content { */
-/*   position: relative; */
-/*   width: 100%; */
-/*   height: 100%; */
-/* } */
-
-/* 2 columns wide */
-/* .lam-gallery-item--width2 { width: 40%; } */
-
-/* .lam-gallery:after { */
-/*   content: ''; */
-/*   display: block; */
-/*   clear: both; */
-/* } */
-
-/* .lam-gallery-item { */
-/*   float: left; */
-/* } */
-
-/* .lam-gallery div { */
-/*   display: block; */
-/*   max-width: 100%; */
-/* } */
-
-/* .lam-gallery { */
-/*   column-count: 3; */
-/*   column-gap: 1em; */
-/* } */
-/*  */
-/* .lam-gallery-item { /* Masonry bricks or child elements */ */
-/*   background-color: #eee; */
-/*   display: inline-block; */
-/*   margin: 0 0 1em; */
-/*   width: 100%; */
-/* } */
-/*  */
-/* img, iframe { */
-/*   max-width: 100%; */
-/*   height: auto; */
-/*   display: block; */
-/* } */
-
-/* .lam-gallery { */
-/*   display: flex; */
-/*   flex-flow: row wrap; */
-/*   margin-left: -8px; /* Adjustment for the gutter */ */
-/* } */
-/*  */
-/* .lam-gallery-item { */
-/*   flex: auto; */
-/*   height: 250px; */
-/*   min-width: 150px; */
-/*   margin: 0 8px 8px 0; /* Some gutter */ */
-/* } */
-/*  */
-/* .lam-gallery-item { */
-/*   &:nth-child(4n+1){ */
-/*     width: 250px; */
-/*   } */
-/*   &:nth-child(4n+2){ */
-/*     width: 325px; */
-/*   } */
-/*   &:nth-child(4n+3){ */
-/*     width: 180px; */
-/*   } */
-/*   &:nth-child(4n+4){ */
-/*     width: 380px; */
-/*   } */
-/* } */
-
-
-/* /* fluid 5 columns */ */
-/* .lam-gallery-sizer, */
-/* .lam-gallery-item { */
-/*   width: 33%; */
-/*   background-color: #ff0000; */
-/*   /* float: left; */ */
-/*   /* width: 150px;  */ */
-/*   /* height: 150px; */ */
-/* } */
-
-/* * { box-sizing: border-box; } */
-/*  */
-/* /* ---- grid ---- */ */
-/*  */
-/* .lam-gallery { */
-/*   background: #DDD; */
-/* } */
-/*  */
-/* /* clear fix */ */
-/* .lam-gallery:after { */
-/*   content: ''; */
-/*   display: block; */
-/*   clear: both; */
-/* } */
-/*  */
-/* /* ---- .element-item ---- */ */
-/*  */
-/* /* 5 columns, percentage width */ */
-/* .lam-gallery-item, */
-/* .lam-gallery-sizer { */
-/*   width: 20%; */
-/* } */
-/*  */
-/* .lam-gallery-item { */
-/*   float: left; */
-/*   height: 100px; */
-/*   background: #0D8; */
-/*   border: 2px solid #333; */
-/*   border-color: hsla(0, 0%, 0%, 0.7); */
-/* } */
-/*  */
-/* .lam-gallery-item--width2 { width: 40%; } */
-/* .lam-gallery-item--height2 { height: 200px; } */
-
-/* 2 columns */
-/* .lam-gallery-item--width2 { width: 33%; } */
-
-/* .grid-item { */
-/*   float: left; */
-/* } */
-
-/* .lam-gallery-item img { */
-/*   display: block; */
-/*   max-width: 100%; */
-/* } */
-
-/*
-.navbar-lam {
-    color: #ff0000;
-}
-
-.navbar-brand:hover {
-    color: #ff0000; !important
-}
-
-.navbar-brand li.active a, ul.nav li.active a {
-    color: #ff0000; !important
-}
-
-ul.nav {
-    color: #cacaca;
-}
-
-ul.nav li a, ul.nav li a:visited {
-    color: #cacaca;
-}
-
-ul.nav li a:hover, ul.nav li a:active {
-    color: #cacaca;
-}
-
-ul.nav li.active a {
-    color: #cacaca;
-}
-*/
-
-    /*
-.navbar-lam {
-    color: #cacaca;
-}
-*/
-
-/*
-.navbar-lam .navbar-brand {
-    color: #cacaca;
-}
-
-.nav > li > a:hover {
-    color: #cc6600;
-}
-
-.navbar .brand > li > a {
-    color: #cc6600;
-}
-
-.navbar .brand > li > a:hover {
-    color: #cc6600;
-}
-
-.navbar-lam .navbar-brand a:hover {
-    color: #cc6600; !important
-}
-
-.navbar-lam .navbar-nav > li > a,
-.navbar-lam .navbar-brand > li > a {
-    color: #cacaca;
-}
-
-.navbar-lam .navbar-nav > .active > a,
-.navbar-lam .navbar-brand > .active > a {
-    color: #cacaca;
-}
-
-.navbar-lam .navbar-nav > li > a:hover,
-.navbar-lam .navbar-brand > li > a:hover,
-.navbar-lam .navbar-nav > li > a:focus,
-.navbar-lam .navbar-brand > li > a:focus,
-.navbar-lam .navbar-nav > .active > a:hover,
-.navbar-lam .navbar-brand > .active > a:hover,
-.navbar-lam .navbar-nav > .active > a:focus,
-.navbar-lam .navbar-brand > .active > a:focus,
-.navbar-lam .navbar-nav > .open > a,
-.navbar-lam .navbar-brand > .open > a {
-    color: #cc6600;
-}
-*/
 
 .navbar-lam .navbar-brand, .navbar-lam .nav > li > a {
     color: #cacaca;
@@ -403,11 +83,3 @@ ul.nav li.active a {
 .navbar-lam .nav > li > a:active {
     color: #dd7700;
 }
-
-/*
-.navbar .navbar-brand, .navbar .navbar-brand:focus, .navbar .navbar-brand:hover, .navbar .nav > li > a:hover {
-.navbar .navbar-brand, .navbar .navbar-brand:hover, .navbar .nav > li > a:hover {
-    color: #cc6600;
-}
-*/
-

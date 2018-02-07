@@ -257,13 +257,13 @@ $(document).ready(function() {
 
     });
 
-    var $grid = $('#grid').packery({
+    var $grid = $('#grid').masonry({
       itemSelector: '.grid-item',
       percentPosition: true
     });
 
     $grid.imagesLoaded().progress( function() {
-      $grid.packery('layout');
+      $grid.masonry('layout');
     });
 
     // $grid.imagesLoaded('#grid', function() {
@@ -321,7 +321,6 @@ $(document).ready(function() {
 //
 //     initGallery();
 
-    // $('#grid').justifiedGallery('norewind');
   });
 
 });

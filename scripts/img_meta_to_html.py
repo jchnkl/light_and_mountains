@@ -34,10 +34,11 @@ html_template = '''\
   itemscope itemtype="http://schema.org/ImageObject">
     <a data-fancybox="grid" href="{{w_dir}}/{{i}}" itemprop="contentUrl"
       data-size="{{i_width}}x{{i_height}}" data-index="{{idx}}">
-        <img src="{{t_dir}}/{{t}}" itemprop="thumbnail" alt="{{title}}"/>
+        <img class="grid-item-thumbnail" src="{{t_dir}}/{{t}}" itemprop="thumbnail" alt="{{title}}"/>
     </a>
 </figure>
 '''
+        # <img class="grid-item-thumbnail" width="{{t_width}}" height="{{t_height}}" src="{{t_dir}}/{{t}}" itemprop="thumbnail" alt="{{title}}"/>
 # </div>
 
 from os.path import sep

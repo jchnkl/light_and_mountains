@@ -118,25 +118,6 @@ var Images = {
 //   });
 // }
 
-// initialize justifiedGallery
-function initGallery() {
-  $('#lam-gallery').justifiedGallery({
-    selector: 'figure, div:not(.spinner)',
-    margins: 3,
-    rowHeight: 240,
-    cssAnimation: false,
-    imagesAnimationDuration: 0,
-    waitThumbnailsLoad: false,
-    sizeRangeSuffixes: {
-      100  : '_t',
-      240  : '_m',
-      320  : '_n',
-      640  : '_z',
-      1024 : '_b'
-    }
-  });
-}
-
 // $(window).on("load", function() {
 //   console.log("$(window).on(load, ..)");
 //   scrollEventHandler;
@@ -257,14 +238,23 @@ $(document).ready(function() {
 
     });
 
-    var $grid = $('#grid').packery({
-      itemSelector: '.grid-item',
-      percentPosition: true
-    });
+//     var $grid = $('#grid').masonry({
+//       itemSelector: '.grid-item',
+//       percentPosition: true
+//     });
+//
+//     $grid.imagesLoaded().progress( function() {
+//       $grid.masonry('layout');
+//     });
 
-    $grid.imagesLoaded().progress( function() {
-      $grid.packery('layout');
-    });
+//     var $grid = $('#grid').packery({
+//       itemSelector: '.grid-item',
+//       percentPosition: true
+//     });
+//
+//     $grid.imagesLoaded().progress( function() {
+//       $grid.packery('layout');
+//     });
 
     // $grid.imagesLoaded('#grid', function() {
     //   $grid.packery('layout');
@@ -318,10 +308,25 @@ $(document).ready(function() {
 //       $('#grid').append(result[0]);
 //       // $('#grid').append(toHtml(result[0]));
 //     });
-//
-//     initGallery();
 
-    // $('#grid').justifiedGallery('norewind');
+    // $('#grid').justifiedGallery({selector: 'figure, div:not(.spinner)'});
+    // // initialize justifiedGallery
+    $('#grid').justifiedGallery({
+      selector: 'figure, div:not(.spinner)',
+      margins: 5,
+      rowHeight: 100,
+      cssAnimation: true,
+      imagesAnimationDuration: 0,
+      // waitThumbnailsLoad: false,
+      sizeRangeSuffixes: {
+        100  : '_t',
+        240  : '_m',
+        320  : '_n',
+        640  : '_z',
+        1024 : '_b'
+      }
+    });
+
   });
 
 });

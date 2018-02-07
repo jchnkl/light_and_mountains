@@ -29,12 +29,12 @@
 
 # packery
 # <div class="grid-item">
+# <figure class="grid-item {{grid_5}} {{grid_aspect}}" itemprop="associatedMedia"
 html_template = '''\
-<figure class="grid-item {{grid_5}} {{grid_aspect}}" itemprop="associatedMedia"
-  itemscope itemtype="http://schema.org/ImageObject">
+<figure class="grid-item{{grid_5}}{{grid_aspect}}" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <a data-fancybox="grid" href="{{w_dir}}/{{i}}" itemprop="contentUrl"
       data-size="{{i_width}}x{{i_height}}" data-index="{{idx}}">
-        <img src="{{t_dir}}/{{t}}" itemprop="thumbnail" alt="{{title}}"/>
+        <img class="grid-item-thumbnail" width="{{t_width}}" height="{{t_height}}" src="{{t_dir}}/{{t}}" itemprop="thumbnail" alt="{{title}}"/>
     </a>
 </figure>
 '''
@@ -58,9 +58,9 @@ for idx, d in enumerate(img_data):
         grid_aspect = ""
 
         if d['exif']['rating'] == "5":
-          grid_5 = "grid-item--5stars"
+          grid_5 = " grid-item--5stars"
         elif d['i_width'] > d['i_height']:
-          grid_aspect = "grid-item--aspect"
+          grid_aspect = " grid-item--aspect"
 
         out_file.write(template.render( idx=d['idx']
                                       , i=d['i']

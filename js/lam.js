@@ -40,39 +40,6 @@ var Images = {
   }
 }
 
-function toHtml(imgMeta) {
-  var template = document.createElement('template');
-
-  var i = imgMeta['w_dir'] + '/' + imgMeta['i'];
-  var img = '<img src="' + i + '"/>';
-
-  // var t = imgMeta['t_dir'] + '/' + imgMeta['t'];
-  // var img = '<img src="' + t + '"/>';
-
-  var div = '<div class="grid-item">' + img + '</div>';
-
-  if (imgMeta['i_width'] > imgMeta['i_height']) {
-    div = '<div class="grid-item grid-item--aspect-fix">' + img + '</div>';
-  // } else if (imgMeta['exif']['rating'] == 5) {
-  //   div = '<div class="grid-item grid-item--5star">' + img + '</div>';
-  // } else if (imgMeta['exif']['rating'] == 4) {
-  //   div = '<div class="grid-item grid-item--width4">' + img + '</div>';
-  }
-
-  html = div
-
-  // html = '<img class="grid-item" src="' + t + '" style="width:' + imgMeta['width'] + 'px; height:' + imgMeta['height'] + 'px;"/>';
-
-  // html = '<div class="grid-item" style="width:' + imgMeta['width'] + 'px;"></div>';
-
-  html = html.trim()
-  template.innerHTML = html;
-
-  return template.content.firstChild;
-
-  // {{t_dir}}/{{t}}" width="{{t_width}}" height="{{t_height}}" 
-  // itemprop="thumbnail" alt="{{title}}"/>'
-}
 
 $(document).ready(function() {
 

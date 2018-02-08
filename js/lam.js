@@ -94,7 +94,7 @@ $(document).ready(function() {
     $('#grid').justifiedGallery({
       selector: 'figure, div:not(.spinner)',
       margins: 5,
-      rowHeight: 100,
+      rowHeight: 240,
       cssAnimation: true,
       imagesAnimationDuration: 0,
       // waitThumbnailsLoad: false,

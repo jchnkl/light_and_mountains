@@ -76,37 +76,41 @@ function toHtml(imgMeta) {
 
 $(document).ready(function() {
 
+  $('#grid').justifiedGallery({
+    selector: 'figure, div:not(.spinner)',
+    margins: 5,
+    rowHeight: 160,
+    // cssAnimation: true,
+    // imagesAnimationDuration: 0,
+    waitThumbnailsLoad: false,
+    sizeRangeSuffixes: {
+      100  : '_t',
+      240  : '_m',
+      320  : '_n',
+      640  : '_z',
+      1024 : '_b'
+    }
+  });
+
   var urlBuilder = function(idx) {
       return 'html/img_' + ("0000" + idx).slice(-4) + '.html';
-      // return 'json/img_' + ("0000" + idx).slice(-4) + '.json';
   }
 
-  Images.loadMore(52, urlBuilder, function(results) {
+  for (var i = 10; i < 50; i = i + 10) {
+  Images.loadMore(i, urlBuilder, function(results) {
 
     results.forEach(function(result) {
       $('#grid').append(result[0]);
-      // $('#grid').append(toHtml(result[0]));
-
+      // console.log($(body).height());
     });
 
+    $('#grid').justifiedGallery('norewind');
+      console.log($(document).height());
+      console.log($(window).height());
     // $('#grid').justifiedGallery({selector: 'figure, div:not(.spinner)'});
     // // initialize justifiedGallery
-    $('#grid').justifiedGallery({
-      selector: 'figure, div:not(.spinner)',
-      margins: 5,
-      rowHeight: 240,
-      cssAnimation: true,
-      imagesAnimationDuration: 0,
-      // waitThumbnailsLoad: false,
-      sizeRangeSuffixes: {
-        100  : '_t',
-        240  : '_m',
-        320  : '_n',
-        640  : '_z',
-        1024 : '_b'
-      }
-    });
 
   });
+  }
 
 });

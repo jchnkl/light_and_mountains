@@ -19,7 +19,15 @@ for suffix in t m n z c b h k; do
 
     thumb=$(basename $(echo ${img} | sed -e "s/\.jpg/_${suffix}\.jpg/"))
     if [ ! -e ${thumbdir}/${thumb} ]; then
-        convert -geometry ${sizes[${suffix}]}x ${img} ${thumbdir}/${thumb}
+        convert \
+          -strip \
+          -interlace Plane \
+          -sampling-factor 4:2:0 \
+          -define jpeg:dct-method=float \
+          -quality 75% \
+          -geometry ${sizes[${suffix}]}x \
+          ${img} \
+          ${thumbdir}/${thumb}
     fi
     if [ ${suffix} = t ]; then
         pushd ${thumbdir}

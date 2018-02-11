@@ -1,35 +1,5 @@
 #!/usr/bin/env python3
 
-# html_template = '''\
-# <figure class="lam-gallery-item" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-# <a data-fancybox="lam-gallery" href="{{w_dir}}/{{i}}" itemprop="contentUrl"
-#         data-size="{{i_width}}x{{i_height}}" data-index="{{idx}}">
-#   <img src="{{t_dir}}/{{t}}" width="{{t_width}}" height="{{t_height}}" itemprop="thumbnail" alt="{{title}}"/>
-# </a>
-# </figure>
-# '''
-
-# # packery
-# html_template = '''\
-# <figure class="grid-item {{aspect_fix}}" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-# <a data-fancybox="grid" href="{{w_dir}}/{{i}}" itemprop="contentUrl"
-#         data-size="{{i_width}}x{{i_height}}" data-index="{{idx}}">
-#   <img src="{{t_dir}}/{{t}}" width="{{t_width}}" height="{{t_height}}" itemprop="thumbnail" alt="{{title}}"/>
-# </a>
-# </figure>
-# '''
-
-#   var i = imgMeta['w_dir'] + '/' + imgMeta['i'];
-#   var img = '<img src="' + i + '"/>';
-#
-#   // var t = imgMeta['t_dir'] + '/' + imgMeta['t'];
-#   // var img = '<img src="' + t + '"/>';
-#
-#   var div = '<div class="grid-item">' + img + '</div>';
-
-# packery
-# <div class="grid-item">
-# <figure class="grid-item {{grid_5}} {{grid_aspect}}" itemprop="associatedMedia"
 html_template = '''\
 <figure class="grid-item{{grid_5}}{{grid_aspect}}" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <a data-fancybox="grid" href="{{w_dir}}/{{i}}" itemprop="contentUrl"
@@ -38,7 +8,6 @@ html_template = '''\
     </a>
 </figure>
 '''
-# </div>
 
 from os.path import sep
 from sys import argv, stdin

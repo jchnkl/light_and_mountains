@@ -2,6 +2,10 @@ body {
   background-color: #212121;
 }
 
+img {
+  display: block;
+}
+
 img:not([src]) {
   visibility: hidden;
 }

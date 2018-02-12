@@ -20,36 +20,56 @@ out_dir = argv[1]
 
 img_data = loads(stdin.read())
 
-template = Template(html_template)
+def gen_item_html(data):
+    grid_5 = ""
+    grid_aspect = ""
 
-for idx, d in enumerate(img_data):
-    with open(out_dir + sep + 'img_' + '{0:04d}'.format(idx) + '.html', 'w') as out_file:
+    if data['exif']['rating'] == "5":
+      grid_5 = " grid-item--5stars"
+    elif data['i_width'] > data['i_height']:
+      grid_aspect = " grid-item--aspect"
 
-        grid_5 = ""
-        grid_aspect = ""
+    template = Template(html_template)
+    return template.render( idx=data['idx']
+                          , i=data['i']
+                          , t=data['t']
+                          , w_dir=data['w_dir']
+                          , t_dir=data['t_dir']
+                          , title=data['exif']['title']
+                          , caption=data['exif']['caption']
+                          , rating=data['exif']['rating']
+                          , i_width=data['i_width']
+                          , i_height=data['i_height']
+                          , t_width=data['t_width']
+                          , t_height=data['t_height']
+                          , inner_width=data['t_width'] * 0.66
+                          , inner_height=data['t_height'] * 0.66
+                          , margin_t=(data['t_width'] - data['t_width'] * 0.66) / 2
+                          , margin_l=(data['t_height'] - data['t_height'] * 0.66) / 2
+                          , color="#" + ("%02x" % (255-data['idx'])) + ("%02x" % (255-data['idx'])) + ("%02x" % (255-data['idx']))
+                          , grid_aspect=grid_aspect
+                          , grid_5=grid_5
+                          )
 
-        if d['exif']['rating'] == "5":
-          grid_5 = " grid-item--5stars"
-        elif d['i_width'] > d['i_height']:
-          grid_aspect = " grid-item--aspect"
+def one_file_per_item():
+    for idx, data in enumerate(img_data):
+        with open(out_dir + sep + 'img_' + '{0:04d}'.format(idx) + '.html', 'w') as out_file:
+            out_file.write(gen_item_html(data))
 
-        out_file.write(template.render( idx=d['idx']
-                                      , i=d['i']
-                                      , t=d['t']
-                                      , w_dir=d['w_dir']
-                                      , t_dir=d['t_dir']
-                                      , title=d['exif']['title']
-                                      , caption=d['exif']['caption']
-                                      , rating=d['exif']['rating']
-                                      , i_width=d['i_width']
-                                      , i_height=d['i_height']
-                                      , t_width=d['t_width']
-                                      , t_height=d['t_height']
-                                      , inner_width=d['t_width'] * 0.66
-                                      , inner_height=d['t_height'] * 0.66
-                                      , margin_t=(d['t_width'] - d['t_width'] * 0.66) / 2
-                                      , margin_l=(d['t_height'] - d['t_height'] * 0.66) / 2
-                                      , color="#" + ("%02x" % (255-d['idx'])) + ("%02x" % (255-d['idx'])) + ("%02x" % (255-d['idx']))
-                                      , grid_aspect=grid_aspect
-                                      , grid_5=grid_5
-                                      ))
+def batch_items(n):
+    mode = 'w'
+    count = 0
+    for idx, data in enumerate(img_data):
+
+        with open(out_dir + sep + 'img_' + '{0:04d}'.format(count) + '.html', mode) as out_file:
+            out_file.write(gen_item_html(data))
+
+        if (idx + 1) % n == 0:
+            count = count + 1
+            mode = 'w'
+        else:
+            mode = 'a'
+
+if __name__ ==  "__main__":
+    batch_items(100)
+    # one_file_per_item()

@@ -12,6 +12,7 @@
 # '''
 
 html_template = '''\
+<a data-fancybox="grid" href="{{w_dir}}/{{i}}" itemprop="contentUrl" data-index="{{idx}}">
 <img class="grid-box"
      alt="{{title}}"
      longdesc="{{caption}}"
@@ -25,7 +26,7 @@ html_template = '''\
                   {{t_dir}}/{{thumbnails['1024']}} 1024w
                   {{t_dir}}/{{thumbnails['1600']}} 1600w
                   {{t_dir}}/{{thumbnails['2048']}} 2048w"
->
+></a>
 
 '''
      # width="{{t_width}}" height="{{t_height}}">

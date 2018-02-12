@@ -272,7 +272,8 @@ $(document).ready(function() {
 
     aspects = [];
     for (var i = 0; i < imgs.children.length; ++i) {
-      aspects.push(parseFloat(imgs.children[i].dataset.aspect));
+      // console.log(imgs.children[i].children);
+      aspects.push(parseFloat(imgs.children[i].children[0].dataset.aspect));
     }
 
     var grid = document.getElementById('grid');
@@ -297,7 +298,7 @@ $(document).ready(function() {
 
     images = [];
     for (var i = 0; i < imgs.children.length; ++i) {
-      var img = imgs.children[i];
+      var img = imgs.children[i].children[0];
       var box = layoutGeometry.boxes[i];
       var style=`width: ${box.width}px; height: ${box.height}px; top: ${box.top}px; left: ${box.left}px`;
       // imgs.children[i].style.cssText = style;
@@ -305,14 +306,14 @@ $(document).ready(function() {
       img.style.cssText = style;
       // grid.appendChild(img);
       // console.log(img);
-      console.log(i);
+      // console.log(i);
       // console.log(imgs.children[i]);
       images.push(imgs.children[i]);
       // grid.appendChild(imgs.children[i]);
     }
       // console.log(imgs.children[i]);
-      console.log('images');
-      console.log(images);
+      // console.log('images');
+      // console.log(images);
 
     images.forEach(function(image) {
       grid.appendChild(image);

@@ -30,9 +30,24 @@ img_data = []
 
 idx = 0
 
+widths_map = \
+        { '100': 't'
+        , '240': 'm'
+        , '320': 'n'
+        , '640': 'z'
+        , '800': 'c'
+        , '1024': 'b'
+        , '1600': 'h'
+        , '2048': 'k'
+        }
+
 for image in IMAGES:
     i = basename(image)
     t = i.replace('.' + SUFFIX, '_' + THUMBS_SUFFIX + '.' + SUFFIX)
+
+    thumbnails = {}
+    for k, v in widths_map.items():
+        thumbnails[k] = i.replace('.' + SUFFIX, '_' + v + '.' + SUFFIX)
 
     metadata = GExiv2.Metadata(I_DIR + sep + i)
 
@@ -81,6 +96,7 @@ for image in IMAGES:
             , 't_height': t_height
             , 't_aspect': t_width / t_height
             , 'exif': exif
+            , 'thumbnails': thumbnails
             }
         )
 

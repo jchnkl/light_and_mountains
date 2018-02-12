@@ -13,10 +13,20 @@
 
 html_template = '''\
 <img alt="{{title}}"
-     data-src="{{t_dir}}/{{t}}"
-     width="{{t_width}}" height="{{t_height}}">
+     longdesc="{{caption}}"
+     data-src="{{t_dir}}/{{thumbnails['100']}}"
+     data-srcset="{{t_dir}}/{{thumbnails['100']}} 100w
+                  {{t_dir}}/{{thumbnails['240']}} 240w
+                  {{t_dir}}/{{thumbnails['320']}} 320w
+                  {{t_dir}}/{{thumbnails['640']}} 640w
+                  {{t_dir}}/{{thumbnails['800']}} 800w
+                  {{t_dir}}/{{thumbnails['1024']}} 1024w
+                  {{t_dir}}/{{thumbnails['1600']}} 1600w
+                  {{t_dir}}/{{thumbnails['2048']}} 2048w"
+>
 
 '''
+     # width="{{t_width}}" height="{{t_height}}">
 
 from os.path import sep
 from sys import argv, stdin
@@ -56,6 +66,7 @@ def gen_item_html(data):
                           , color="#" + ("%02x" % (255-data['idx'])) + ("%02x" % (255-data['idx'])) + ("%02x" % (255-data['idx']))
                           , grid_aspect=grid_aspect
                           , grid_5=grid_5
+                          , thumbnails=data['thumbnails']
                           )
 
 def one_file_per_item():

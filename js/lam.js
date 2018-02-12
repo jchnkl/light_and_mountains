@@ -1,14 +1,14 @@
 var _index = 0;
 
-// var _lazyLoad = new LazyLoad(
-//   // { threshold: -300
-//   { threshold: 300
-//   , callback_enter: function() { console.log('callback_enter'); }
-//   , callback_set: function() { console.log('callback_set'); }
-//   , callback_load: function() { console.log('callback_load'); }
-//   , callback_error: function() { console.log('callback_error'); }
-//   }
-// );
+var _lazyLoad = new LazyLoad(
+  // { threshold: -300
+  { threshold: 300
+  , callback_enter: function() { console.log('callback_enter'); }
+  , callback_set: function() { console.log('callback_set'); }
+  , callback_load: function() { console.log('callback_load'); }
+  , callback_error: function() { console.log('callback_error'); }
+  }
+);
 
 function getIndex() {
   return _index
@@ -22,7 +22,7 @@ function nextIndex() {
 //   return 'html/img_' + ("0000" + index).slice(-4) + '.html';
 // }
 
-function loadMore(_lazyLoad) {
+function loadMore() {
   return $.ajax({
     url: 'html/img_' + ("0000" + nextIndex()).slice(-4) + '.html',
     success: function(response) {
@@ -32,7 +32,6 @@ function loadMore(_lazyLoad) {
       e.innerHTML = response;
       document.getElementById("grid").appendChild(e);
       _lazyLoad.update();
-      // lazyLoadInstance.update();
     }
   });
 }
@@ -250,23 +249,5 @@ $(window).on('scroll', onScroll);
 
 
 $(document).ready(function() {
-
-  var lazyLoadScript = "js/lazyload.8.6.0.min.js";
-  if ('IntersectionObserver' in window) {
-    lazyLoadScript = "js/lazyload.10.4.2.min.js";
-  }
-
-  $.getScript(lazyLoadScript, function() {
-    var _lazyLoad = new LazyLoad(
-        // { threshold: -300
-        { threshold: 300
-        , callback_enter: function() { console.log('callback_enter'); }
-        , callback_set: function() { console.log('callback_set'); }
-        , callback_load: function() { console.log('callback_load'); }
-        , callback_error: function() { console.log('callback_error'); }
-        }
-      );
-
-    loadMore(_lazyLoad)
-  });
+  loadMore()
 });

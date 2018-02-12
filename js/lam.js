@@ -1,5 +1,7 @@
 var _index = 0;
 
+var _lazyLoad = new LazyLoad();
+
 function getIndex() {
   return _index
 }
@@ -21,6 +23,7 @@ function loadMore() {
       e.className = "subgrid";
       e.innerHTML = response;
       document.getElementById("grid").appendChild(e);
+      _lazyLoad.update();
     }
   });
 }

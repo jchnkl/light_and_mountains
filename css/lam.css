@@ -11,7 +11,13 @@ img:not([src]) {
   visibility: hidden;
 }
 
+.grid-box {
+  position: absolute;
+  background: rgba(255,255,255,0.15);
+}
+
 .lam-content {
+  position: relative;
   width: 80%;
   color: #cacaca;
   text-align: center;

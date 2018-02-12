@@ -1,14 +1,21 @@
 #!/usr/bin/env python3
 
+# html_template = '''\
+# <figure class="grid-item{{grid_5}}{{grid_aspect}}"
+#         itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+#     <a data-fancybox="grid" href="{{w_dir}}/{{i}}" itemprop="contentUrl"
+#        data-size="{{i_width}}x{{i_height}}" data-index="{{idx}}">
+#         <img class="grid-item-thumbnail" width="{{t_width}}" height="{{t_height}}"
+#              src="{{t_dir}}/{{t}}" itemprop="thumbnail" alt="{{title}}"/>
+#     </a>
+# </figure>
+# '''
+
 html_template = '''\
-<figure class="grid-item{{grid_5}}{{grid_aspect}}"
-        itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
-    <a data-fancybox="grid" href="{{w_dir}}/{{i}}" itemprop="contentUrl"
-       data-size="{{i_width}}x{{i_height}}" data-index="{{idx}}">
-        <img class="grid-item-thumbnail" width="{{t_width}}" height="{{t_height}}"
-             src="{{t_dir}}/{{t}}" itemprop="thumbnail" alt="{{title}}"/>
-    </a>
-</figure>
+<img alt="{{title}}"
+     data-src="{{t_dir}}/{{t}}"
+     width="{{t_width}}" height="{{t_height}}">
+
 '''
 
 from os.path import sep

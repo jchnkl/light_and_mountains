@@ -5,7 +5,8 @@ var _lazyLoad = new LazyLoad(
   { threshold: 300
   // , container: document.getElementById('grid')
   // , elements_selector: 'div, img'
-  , elements_selector: '.grid-box, img'
+  // , elements_selector: 'img'
+  // , elements_selector: '.grid-box, img'
   , callback_enter: function() { console.log('callback_enter'); }
   , callback_set: function() { console.log('callback_set'); }
   , callback_load: function() { console.log('callback_load'); }
@@ -279,7 +280,12 @@ $(document).ready(function() {
     var layoutGeometry = require('justified-layout')(aspects,
       { containerWidth: grid.clientWidth });
 
-    // console.log(layoutGeometry);
+    // console.log(aspects);
+    // console.log(layoutGeometry.boxes);
+
+    // for (var i = 0; i < aspects.length; ++i) {
+    //   console.log(aspects[i] == layoutGeometry.boxes[i].aspectRatio)
+    // }
 
     // var boxes = layoutGeometry.boxes.map(function(box) {
     //   var style=`width: ${box.width}px; height: ${box.height}px; top: ${box.top}px; left: ${box.left}px"`;
@@ -289,14 +295,28 @@ $(document).ready(function() {
     // console.log(layoutGeometry.boxes.length)
     // console.log(imgs.children.length)
 
+    images = [];
     for (var i = 0; i < imgs.children.length; ++i) {
       var img = imgs.children[i];
       var box = layoutGeometry.boxes[i];
       var style=`width: ${box.width}px; height: ${box.height}px; top: ${box.top}px; left: ${box.left}px`;
       // imgs.children[i].style.cssText = style;
+      // img.className = 'grid-image';
       img.style.cssText = style;
-      grid.appendChild(img);
+      // grid.appendChild(img);
+      // console.log(img);
+      console.log(i);
+      // console.log(imgs.children[i]);
+      images.push(imgs.children[i]);
+      // grid.appendChild(imgs.children[i]);
     }
+      // console.log(imgs.children[i]);
+      console.log('images');
+      console.log(images);
+
+    images.forEach(function(image) {
+      grid.appendChild(image);
+    });
 
     // grid.appendChild(imgs);
 

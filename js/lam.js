@@ -1,6 +1,10 @@
 var _index = 0;
 
-function index() {
+function getIndex() {
+  return _index
+}
+
+function nextIndex() {
   return _index++;
 }
 

@@ -14,6 +14,7 @@
 html_template = '''\
 <img alt="{{title}}"
      longdesc="{{caption}}"
+     data-aspect="{{i_aspect}}"
      data-src="{{t_dir}}/{{thumbnails['100']}}"
      data-srcset="{{t_dir}}/{{thumbnails['100']}} 100w
                   {{t_dir}}/{{thumbnails['240']}} 240w
@@ -66,6 +67,7 @@ def gen_item_html(data):
                           , color="#" + ("%02x" % (255-data['idx'])) + ("%02x" % (255-data['idx'])) + ("%02x" % (255-data['idx']))
                           , grid_aspect=grid_aspect
                           , grid_5=grid_5
+                          , i_aspect=data['i_aspect']
                           , thumbnails=data['thumbnails']
                           )
 

@@ -12,6 +12,19 @@ function nextIndex() {
 //   return 'html/img_' + ("0000" + index).slice(-4) + '.html';
 // }
 
+function loadMore() {
+  return $.ajax({
+    url: 'html/img_' + ("0000" + nextIndex()).slice(-4) + '.html',
+    success: function(response) {
+      // console.log(response);
+      var e = document.createElement("div");
+      e.className = "subgrid";
+      e.innerHTML = response;
+      document.getElementById("grid").appendChild(e);
+    }
+  });
+}
+
 /*
 function loadMore(urls, cb) {
   var promises = [];
@@ -222,3 +235,8 @@ $(window).on('scroll', onScroll);
 
   // initPage(10);
 // });
+
+
+$(document).ready(function() {
+  loadMore()
+});

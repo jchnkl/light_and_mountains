@@ -8,10 +8,11 @@ function nextIndex() {
   return _index++;
 }
 
-function buildUrl(index) {
-  return 'html/img_' + ("0000" + index).slice(-4) + '.html';
-}
+// function buildUrl(index) {
+//   return 'html/img_' + ("0000" + index).slice(-4) + '.html';
+// }
 
+/*
 function loadMore(urls, cb) {
   var promises = [];
   for (idx in urls) {
@@ -25,6 +26,7 @@ function loadMore(urls, cb) {
     cb(results);
   });
 }
+*/
 
 // // returns XMLHttpRequest object
 // function loadMore(url, successCb) {
@@ -52,6 +54,7 @@ function loadMore(urls, cb) {
 //   }
 // }
 
+/*
 function initPage(items) {
   var urls = [];
 
@@ -79,7 +82,9 @@ function initPage(items) {
 
   });
 }
+*/
 
+/*
 function onScroll() {
   $(window).unbind('scroll');
   if ($(window).scrollTop() + $(window).height() >= 0.8 * $(document).height()) {
@@ -109,25 +114,26 @@ function onScroll() {
 }
 
 $(window).on('scroll', onScroll);
+*/
 
-$(document).ready(function() {
+// $(document).ready(function() {
 
-  $('#grid').justifiedGallery({
-    selector: 'figure, div:not(.spinner)',
-    margins: 5,
-    // rowHeight: 160,
-    rowHeight: 200,
-    // cssAnimation: true,
-    // imagesAnimationDuration: 0,
-    waitThumbnailsLoad: false,
-    sizeRangeSuffixes: {
-      100  : '_t',
-      240  : '_m',
-      320  : '_n',
-      640  : '_z',
-      1024 : '_b'
-    }
-  });
+  // $('#grid').justifiedGallery({
+  //   selector: 'figure, div:not(.spinner)',
+  //   margins: 5,
+  //   // rowHeight: 160,
+  //   rowHeight: 200,
+  //   // cssAnimation: true,
+  //   // imagesAnimationDuration: 0,
+  //   waitThumbnailsLoad: false,
+  //   sizeRangeSuffixes: {
+  //     100  : '_t',
+  //     240  : '_m',
+  //     320  : '_n',
+  //     640  : '_z',
+  //     1024 : '_b'
+  //   }
+  // });
 
 //   function rabbitHole(response) {
 //     // console.log(response);
@@ -214,5 +220,5 @@ $(document).ready(function() {
 //     }
 //   });
 
-  initPage(10);
-});
+  // initPage(10);
+// });

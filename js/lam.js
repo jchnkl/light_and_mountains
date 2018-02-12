@@ -3,6 +3,9 @@ var _index = 0;
 var _lazyLoad = new LazyLoad(
   // { threshold: -300
   { threshold: 300
+  // , container: document.getElementById('grid')
+  // , elements_selector: 'div, img'
+  , elements_selector: '.grid-box, img'
   , callback_enter: function() { console.log('callback_enter'); }
   , callback_set: function() { console.log('callback_set'); }
   , callback_load: function() { console.log('callback_load'); }
@@ -22,17 +25,20 @@ function nextIndex() {
 //   return 'html/img_' + ("0000" + index).slice(-4) + '.html';
 // }
 
-function loadMore() {
+function loadMore(success) {
   return $.ajax({
     url: 'html/img_' + ("0000" + nextIndex()).slice(-4) + '.html',
-    success: function(response) {
-      // console.log(response);
-      var e = document.createElement("div");
-      e.className = "subgrid";
-      e.innerHTML = response;
-      document.getElementById("grid").appendChild(e);
-      _lazyLoad.update();
-    }
+    success: success
+    // function(response) {
+    //   // console.log(response);
+    //   // var e = document.createElement("div");
+    //   // e.className = "subgrid";
+    //   // e.innerHTML = response;
+    //   // document.getElementById("grid").appendChild(e);
+    //   document.getElementById("grid").innerHTML += response;
+    //   _lazyLoad.update();
+    //   cb();
+    // }
   });
 }
 
@@ -249,5 +255,86 @@ $(window).on('scroll', onScroll);
 
 
 $(document).ready(function() {
-  loadMore()
+
+  loadMore(function(response) {
+
+    var imgs = document.createElement('div');
+    imgs.innerHTML = response;
+
+    // console.log(e.children);
+
+    // console.log(document.getElementById("grid").children.length);
+    // var grid = document.getElementById('grid');
+    // console.log(grid
+    // var children = document.getElementById('grid').children;
+    // console.log(children);
+
+    aspects = [];
+    for (var i = 0; i < imgs.children.length; ++i) {
+      aspects.push(parseFloat(imgs.children[i].dataset.aspect));
+    }
+
+    var grid = document.getElementById('grid');
+
+    var layoutGeometry = require('justified-layout')(aspects,
+      { containerWidth: grid.clientWidth });
+
+    // console.log(layoutGeometry);
+
+    // var boxes = layoutGeometry.boxes.map(function(box) {
+    //   var style=`width: ${box.width}px; height: ${box.height}px; top: ${box.top}px; left: ${box.left}px"`;
+    //   return '<div class="box" style="' + style + '"></div>"
+    // }).join('\n')
+
+    // console.log(layoutGeometry.boxes.length)
+    // console.log(imgs.children.length)
+
+    for (var i = 0; i < imgs.children.length; ++i) {
+      var img = imgs.children[i];
+      var box = layoutGeometry.boxes[i];
+      var style=`width: ${box.width}px; height: ${box.height}px; top: ${box.top}px; left: ${box.left}px`;
+      // imgs.children[i].style.cssText = style;
+      img.style.cssText = style;
+      grid.appendChild(img);
+    }
+
+    // grid.appendChild(imgs);
+
+    // for (var i = 0; i < layoutGeometry.boxes.length; ++i) {
+    //   console.log(i);
+    //   var box = layoutGeometry.boxes[i];
+    //   var img = imgs.children[i];
+    //   // console.log(img);
+    //   var style=`width: ${box.width}px; height: ${box.height}px; top: ${box.top}px; left: ${box.left}px`;
+    //
+    //   img.style.cssText = style;
+    //
+    //   // grid.appendChild(img);
+    //
+    //   // html = '<div style="' + style + '">' + img + '</div>';
+    //   // console.log(html);
+    //   // grid.innerHTML += '<div class="grid-box" style="' + style + '">' + img + '</div>';
+    //
+    //   // var e = document.createElement('div');
+    //   // e.className = 'grid-box';
+    //   // e.style.cssText = `width: ${box.width}px; height: ${box.height}px; top: ${box.top}px; left: ${box.left}px`;
+    //
+    //   // // try {
+    //   // e.appendChild(img);
+    //   // // } catch (err) {
+    //   // //   console.log(err);
+    //   //   console.log(img);
+    //   // // }
+    //
+    //   // e.innerHTML = img;
+    //   // grid.appendChild(e);
+    //   // console.log(img);
+    // }
+
+    // grid.innerHTML = boxes;
+
+    _lazyLoad.update();
+
+  });
+
 });

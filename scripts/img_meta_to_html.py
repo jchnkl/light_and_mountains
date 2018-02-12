@@ -12,10 +12,12 @@
 # '''
 
 html_template = '''\
-<img alt="{{title}}"
+<div class="grid-box"
+<img class="grid-image"
+     alt="{{title}}"
      longdesc="{{caption}}"
      data-aspect="{{i_aspect}}"
-     data-src="{{t_dir}}/{{thumbnails['100']}}"
+     data-src="{{t_dir}}/{{thumbnails['640']}}"
      data-srcset="{{t_dir}}/{{thumbnails['100']}} 100w
                   {{t_dir}}/{{thumbnails['240']}} 240w
                   {{t_dir}}/{{thumbnails['320']}} 320w
@@ -25,6 +27,7 @@ html_template = '''\
                   {{t_dir}}/{{thumbnails['1600']}} 1600w
                   {{t_dir}}/{{thumbnails['2048']}} 2048w"
 >
+</div>
 
 '''
      # width="{{t_width}}" height="{{t_height}}">

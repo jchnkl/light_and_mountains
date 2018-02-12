@@ -22,7 +22,9 @@ T_DIR = argv[3]
 # img suffix, .e.g. png
 SUFFIX = argv[4]
 
-IMAGES = argv[5:]
+THUMBS_SUFFIX = argv[5]
+
+IMAGES = argv[6:]
 
 img_data = []
 
@@ -30,7 +32,7 @@ idx = 0
 
 for image in IMAGES:
     i = basename(image)
-    t = i.replace('.' + SUFFIX, '_t.' + SUFFIX)
+    t = i.replace('.' + SUFFIX, '_' + THUMBS_SUFFIX + '.' + SUFFIX)
 
     metadata = GExiv2.Metadata(I_DIR + sep + i)
 

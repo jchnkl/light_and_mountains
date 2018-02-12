@@ -2,6 +2,10 @@ body {
   background-color: #212121;
 }
 
+img:not([src]) {
+  visibility: hidden;
+}
+
 .lam-content {
   width: 80%;
   color: #cacaca;

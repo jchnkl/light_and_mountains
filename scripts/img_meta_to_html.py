@@ -26,7 +26,7 @@ html_template = '''\
                   {{t_dir}}/{{thumbnails['1024']}} 1024w
                   {{t_dir}}/{{thumbnails['1600']}} 1600w
                   {{t_dir}}/{{thumbnails['2048']}} 2048w"
-></a>
+/></a>
 
 '''
      # width="{{t_width}}" height="{{t_height}}">

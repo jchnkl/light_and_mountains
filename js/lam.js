@@ -1,5 +1,7 @@
 var _index = 0;
 
+var _resizeTimeout = null;
+
 var _lazyLoad = new LazyLoad(
   // { threshold: -300
   { threshold: 300
@@ -261,6 +263,40 @@ $(window).on('scroll', onScroll);
 // });
 
 
+
+function resizeHandler() {
+  var aspects = [];
+
+  var imgs = document.getElementById('grid').children;
+
+  for (var i = 0; i < imgs.length; ++i) {
+    aspects.push(parseFloat(imgs[i].firstElementChild.dataset.aspect));
+  }
+
+  var layoutGeometry = require('justified-layout')(aspects,
+    { targetRowHeight: 240
+    , containerWidth: grid.clientWidth
+    });
+
+  for (var i = 0; i < imgs.length; ++i) {
+    var box = layoutGeometry.boxes[i];
+    var style=`width: ${box.width}px; height: ${box.height}px; top: ${box.top}px; left: ${box.left}px`;
+    imgs[i].firstElementChild.style = style;
+  }
+}
+
+function throttledResizeCb() {
+  if (!_resizeTimeout) {
+    window.removeEventListener("resize", throttledResizeCb);
+    _resizeTimeout = setTimeout(function() {
+      _resizeTimeout = null;
+      resizeHandler();
+      window.addEventListener("resize", throttledResizeCb, false);
+    }, 125);
+  }
+}
+
+// init / main
 (function() {
 
   loadMore(function(response) {
@@ -290,5 +326,7 @@ $(window).on('scroll', onScroll);
     _lazyLoad.update();
 
   });
+
+  window.addEventListener("resize", throttledResizeCb, false);
 
 }());

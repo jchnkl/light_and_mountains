@@ -18,14 +18,22 @@ html_template = '''\
      longdesc="{{caption}}"
      data-aspect="{{i_aspect}}"
      data-src="{{t_dir}}/{{thumbnails['640']}}"
-     data-srcset="{{t_dir}}/{{thumbnails['100']}} 100w
-                  {{t_dir}}/{{thumbnails['240']}} 240w
-                  {{t_dir}}/{{thumbnails['320']}} 320w
-                  {{t_dir}}/{{thumbnails['640']}} 640w
-                  {{t_dir}}/{{thumbnails['800']}} 800w
-                  {{t_dir}}/{{thumbnails['1024']}} 1024w
-                  {{t_dir}}/{{thumbnails['1600']}} 1600w
+     data-srcset="{{t_dir}}/{{thumbnails['100']}} 100w,
+                  {{t_dir}}/{{thumbnails['240']}} 240w,
+                  {{t_dir}}/{{thumbnails['320']}} 320w,
+                  {{t_dir}}/{{thumbnails['640']}} 640w,
+                  {{t_dir}}/{{thumbnails['800']}} 800w,
+                  {{t_dir}}/{{thumbnails['1024']}} 1024w,
+                  {{t_dir}}/{{thumbnails['1600']}} 1600w,
                   {{t_dir}}/{{thumbnails['2048']}} 2048w"
+     sizes="(max-width: 320px) 100px,
+            (max-width: 240px) 240px,
+            (max-width: 320px) 320px,
+            (max-width: 640px) 640px,
+            (max-width: 800px) 800px,
+            (max-width: 1024px) 1024px,
+            (max-width: 1600px) 1600px,
+            2048px"
 /></a>
 
 '''

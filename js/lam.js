@@ -260,7 +260,6 @@ $(document).ready(function() {
 
   loadMore(function(response) {
 
-    // var imgs = response;
     var div = document.createElement('div');
     div.innerHTML = response;
 
@@ -268,10 +267,8 @@ $(document).ready(function() {
 
     aspects = [];
     for (var i = 0; i < imgs.length; ++i) {
-      // aspects.push(parseFloat(imgs[i].children[0].dataset.aspect));
       aspects.push(parseFloat(imgs[i].firstElementChild.dataset.aspect));
     }
-    // console.log(aspects);
 
     var grid = document.getElementById('grid');
 
@@ -286,124 +283,7 @@ $(document).ready(function() {
       // index == 0, because appending to grid removes it from imgs!
       imgs[0].firstElementChild.style = style;
       grid.appendChild(imgs[0]);
-      // console.log(i);
-      // console.log(box);
-      // console.log(imgs[0]);
     }
-
-    // console.log(aspects);
-
-    //   console.log(imgs);
-    // $.each(imgs, function(idx, img) {
-    //   console.log(idx);
-    //   // var box = layoutGeometry.boxes[idx];
-    //   // var style=`width: ${box.width}px; height: ${box.height}px; top: ${box.top}px; left: ${box.left}px`;
-    //   // img.style.cssText = style;
-    //   // $('grid').append(img);
-    // });
-
-    /*
-    */
-
-    /*
-    var imgs = document.createElement('div');
-    imgs.innerHTML = response;
-
-    // console.log(e.children);
-
-    // console.log(document.getElementById("grid").children.length);
-    // var grid = document.getElementById('grid');
-    // console.log(grid
-    // var children = document.getElementById('grid').children;
-    // console.log(children);
-
-    aspects = [];
-    for (var i = 0; i < imgs.children.length; ++i) {
-      // console.log(imgs.children[i].children);
-      aspects.push(parseFloat(imgs.children[i].children[0].dataset.aspect));
-    }
-
-    var grid = document.getElementById('grid');
-
-    var layoutGeometry = require('justified-layout')(aspects,
-      { targetRowHeight: 240
-      , containerWidth: grid.clientWidth
-      });
-
-    // console.log(aspects);
-    // console.log(layoutGeometry.boxes);
-
-    // for (var i = 0; i < aspects.length; ++i) {
-    //   console.log(aspects[i] == layoutGeometry.boxes[i].aspectRatio)
-    // }
-
-    // var boxes = layoutGeometry.boxes.map(function(box) {
-    //   var style=`width: ${box.width}px; height: ${box.height}px; top: ${box.top}px; left: ${box.left}px"`;
-    //   return '<div class="box" style="' + style + '"></div>"
-    // }).join('\n')
-
-    // console.log(layoutGeometry.boxes.length)
-    // console.log(imgs.children.length)
-
-    images = [];
-    for (var i = 0; i < imgs.children.length; ++i) {
-      var img = imgs.children[i].children[0];
-      var box = layoutGeometry.boxes[i];
-      var style=`width: ${box.width}px; height: ${box.height}px; top: ${box.top}px; left: ${box.left}px`;
-      // imgs.children[i].style.cssText = style;
-      // img.className = 'grid-image';
-      img.style.cssText = style;
-      // grid.appendChild(img);
-      // console.log(img);
-      // console.log(i);
-      // console.log(imgs.children[i]);
-      // console.log(imgs.children.item(i));
-      images.push(imgs.children[i]);
-      // grid.appendChild(imgs.children.item(i));
-    }
-      // console.log(imgs.children[i]);
-      // console.log('images');
-      // console.log(images);
-
-    images.forEach(function(image) {
-      grid.appendChild(image);
-    });
-    */
-
-    // grid.appendChild(imgs);
-
-    // for (var i = 0; i < layoutGeometry.boxes.length; ++i) {
-    //   console.log(i);
-    //   var box = layoutGeometry.boxes[i];
-    //   var img = imgs.children[i];
-    //   // console.log(img);
-    //   var style=`width: ${box.width}px; height: ${box.height}px; top: ${box.top}px; left: ${box.left}px`;
-    //
-    //   img.style.cssText = style;
-    //
-    //   // grid.appendChild(img);
-    //
-    //   // html = '<div style="' + style + '">' + img + '</div>';
-    //   // console.log(html);
-    //   // grid.innerHTML += '<div class="grid-box" style="' + style + '">' + img + '</div>';
-    //
-    //   // var e = document.createElement('div');
-    //   // e.className = 'grid-box';
-    //   // e.style.cssText = `width: ${box.width}px; height: ${box.height}px; top: ${box.top}px; left: ${box.left}px`;
-    //
-    //   // // try {
-    //   // e.appendChild(img);
-    //   // // } catch (err) {
-    //   // //   console.log(err);
-    //   //   console.log(img);
-    //   // // }
-    //
-    //   // e.innerHTML = img;
-    //   // grid.appendChild(e);
-    //   // console.log(img);
-    // }
-
-    // grid.innerHTML = boxes;
 
     _lazyLoad.update();
 

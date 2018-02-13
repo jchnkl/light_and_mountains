@@ -30,17 +30,6 @@ function loadMore(cb) {
   return $.ajax({
     url: 'html/img_' + ("0000" + nextIndex()).slice(-4) + '.html',
     success: cb,
-    // dataType: 'xml'
-    // function(response) {
-    //   // console.log(response);
-    //   // var e = document.createElement("div");
-    //   // e.className = "subgrid";
-    //   // e.innerHTML = response;
-    //   // document.getElementById("grid").appendChild(e);
-    //   document.getElementById("grid").innerHTML += response;
-    //   _lazyLoad.update();
-    //   cb();
-    // }
   });
 }
 

@@ -26,11 +26,27 @@ function nextIndex() {
 //   return 'html/img_' + ("0000" + index).slice(-4) + '.html';
 // }
 
+// function loadMore(cb) {
+//   return $.ajax({
+//     url: 'html/img_' + ("0000" + nextIndex()).slice(-4) + '.html',
+//     success: cb,
+//   });
+// }
+
 function loadMore(cb) {
-  return $.ajax({
-    url: 'html/img_' + ("0000" + nextIndex()).slice(-4) + '.html',
-    success: cb,
-  });
+  function handler() {
+    if(this.status == 200 && this.responseXML != null) {
+      cb(this.responseXML);
+    } else {
+      console.log(this.statusText)
+    }
+  }
+
+  var client = new XMLHttpRequest();
+  client.responseType = 'document';
+  client.onload = handler;
+  client.open('GET', 'html/img_' + ("0000" + nextIndex()).slice(-4) + '.html');
+  client.send();
 }
 
 /*
@@ -249,10 +265,7 @@ $(window).on('scroll', onScroll);
 
   loadMore(function(response) {
 
-    var div = document.createElement('div');
-    div.innerHTML = response;
-
-    var imgs = div.children;
+    var imgs = response.activeElement.children;
 
     aspects = [];
     for (var i = 0; i < imgs.length; ++i) {

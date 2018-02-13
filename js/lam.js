@@ -245,7 +245,7 @@ $(window).on('scroll', onScroll);
 // });
 
 
-$(document).ready(function() {
+(function() {
 
   loadMore(function(response) {
 
@@ -278,4 +278,4 @@ $(document).ready(function() {
 
   });
 
-});
+}());

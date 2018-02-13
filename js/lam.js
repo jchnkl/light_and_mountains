@@ -26,10 +26,11 @@ function nextIndex() {
 //   return 'html/img_' + ("0000" + index).slice(-4) + '.html';
 // }
 
-function loadMore(success) {
+function loadMore(cb) {
   return $.ajax({
     url: 'html/img_' + ("0000" + nextIndex()).slice(-4) + '.html',
-    success: success
+    success: cb,
+    // dataType: 'xml'
     // function(response) {
     //   // console.log(response);
     //   // var e = document.createElement("div");
@@ -259,6 +260,52 @@ $(document).ready(function() {
 
   loadMore(function(response) {
 
+    // var imgs = response;
+    var div = document.createElement('div');
+    div.innerHTML = response;
+
+    var imgs = div.children;
+
+    aspects = [];
+    for (var i = 0; i < imgs.length; ++i) {
+      // aspects.push(parseFloat(imgs[i].children[0].dataset.aspect));
+      aspects.push(parseFloat(imgs[i].firstElementChild.dataset.aspect));
+    }
+    // console.log(aspects);
+
+    var grid = document.getElementById('grid');
+
+    var layoutGeometry = require('justified-layout')(aspects,
+      { targetRowHeight: 240
+      , containerWidth: grid.clientWidth
+      });
+
+    for (var i = 0; i < imgs.length; ++i) {
+      var box = layoutGeometry.boxes[i];
+      var style=`width: ${box.width}px; height: ${box.height}px; top: ${box.top}px; left: ${box.left}px`;
+      // index == 0, because appending to grid removes it from imgs!
+      imgs[0].firstElementChild.style = style;
+      grid.appendChild(imgs[0]);
+      // console.log(i);
+      // console.log(box);
+      // console.log(imgs[0]);
+    }
+
+    // console.log(aspects);
+
+    //   console.log(imgs);
+    // $.each(imgs, function(idx, img) {
+    //   console.log(idx);
+    //   // var box = layoutGeometry.boxes[idx];
+    //   // var style=`width: ${box.width}px; height: ${box.height}px; top: ${box.top}px; left: ${box.left}px`;
+    //   // img.style.cssText = style;
+    //   // $('grid').append(img);
+    // });
+
+    /*
+    */
+
+    /*
     var imgs = document.createElement('div');
     imgs.innerHTML = response;
 
@@ -279,7 +326,9 @@ $(document).ready(function() {
     var grid = document.getElementById('grid');
 
     var layoutGeometry = require('justified-layout')(aspects,
-      { containerWidth: grid.clientWidth });
+      { targetRowHeight: 240
+      , containerWidth: grid.clientWidth
+      });
 
     // console.log(aspects);
     // console.log(layoutGeometry.boxes);
@@ -308,8 +357,9 @@ $(document).ready(function() {
       // console.log(img);
       // console.log(i);
       // console.log(imgs.children[i]);
+      // console.log(imgs.children.item(i));
       images.push(imgs.children[i]);
-      // grid.appendChild(imgs.children[i]);
+      // grid.appendChild(imgs.children.item(i));
     }
       // console.log(imgs.children[i]);
       // console.log('images');
@@ -318,6 +368,7 @@ $(document).ready(function() {
     images.forEach(function(image) {
       grid.appendChild(image);
     });
+    */
 
     // grid.appendChild(imgs);
 

@@ -1,9 +1,12 @@
 body {
   /* background-color: #212121; */
   background: rgba(33,33,33,1.0);
+  /* margin: 0 auto; */
 }
 
 img {
+  /* width: 100%; */
+  /* object-fit: contain; */
   display: block;
 }
 
@@ -16,10 +19,27 @@ img:not([src]) {
   background: rgba(255,255,255,0.15);
 }
 
-.lam-content {
+#grid {
+  /* overflow: hidden; */
+  /* display: block; */
   position: relative;
-  width: 80%;
+  /* width: 100%; */
+  /* color: #cacaca; */
+  /* margin: 0 auto; */
+  /* border: 0; */
+  /* padding: 0; */
+  /* text-align: center; */
+}
+
+.lam-content {
+  /* overflow: hidden; */
+  /* display: block; */
+  /* position: relative; */
+  /* width: 90%; */
   color: #cacaca;
+  /* margin: 0 auto; */
+  /* border: 0; */
+  /* padding: 0; */
   text-align: center;
 }
 

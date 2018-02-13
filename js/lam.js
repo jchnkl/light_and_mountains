@@ -9,10 +9,10 @@ var _lazyLoad = new LazyLoad(
   // , elements_selector: 'div, img'
   // , elements_selector: 'img'
   // , elements_selector: '.grid-box, img'
-  , callback_enter: function() { console.log('callback_enter'); }
-  , callback_set: function() { console.log('callback_set'); }
-  , callback_load: function() { console.log('callback_load'); }
-  , callback_error: function() { console.log('callback_error'); }
+  // , callback_enter: function() { console.log('callback_enter'); }
+  // , callback_set: function() { console.log('callback_set'); }
+  // , callback_load: function() { console.log('callback_load'); }
+  // , callback_error: function() { console.log('callback_error'); }
   }
 );
 

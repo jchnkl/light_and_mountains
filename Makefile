@@ -10,6 +10,7 @@ html:
 	scripts/gen_img_meta.py img img img/tns jpg m img/*.jpg img/*.jpg img/*.jpg img/*.jpg img/*.jpg img/*.jpg img/*.jpg img/*.jpg img/*.jpg img/*.jpg | scripts/img_meta_to_html.py html
 
 clean:
-	rm index.html
+	rm -f index.html
+	rm -f html/*.html
 
 .PHONY: clean html

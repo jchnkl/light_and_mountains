@@ -278,6 +278,8 @@ function resizeHandler() {
     , containerWidth: grid.clientWidth
     });
 
+  grid.style.height = layoutGeometry.containerHeight + 'px';
+
   for (var i = 0; i < imgs.length; ++i) {
     var box = layoutGeometry.boxes[i];
     var style=`width: ${box.width}px; height: ${box.height}px; top: ${box.top}px; left: ${box.left}px`;
@@ -314,6 +316,8 @@ function throttledResizeCb() {
       { targetRowHeight: 240
       , containerWidth: grid.clientWidth
       });
+
+    grid.style.height = layoutGeometry.containerHeight + 'px';
 
     for (var i = 0; i < imgs.length; ++i) {
       var box = layoutGeometry.boxes[i];

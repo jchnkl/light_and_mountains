@@ -25,7 +25,6 @@ html_template = '''\
 /></a>
 
 '''
-     # width="{{t_width}}" height="{{t_height}}">
 
 from os.path import sep
 from sys import argv, stdin

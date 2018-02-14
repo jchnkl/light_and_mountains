@@ -5,8 +5,8 @@ body {
 }
 
 img {
-  /* width: 100%; */
-  /* object-fit: contain; */
+  max-width: 100%;
+  object-fit: contain;
   display: block;
 }
 

@@ -60,11 +60,13 @@ dir=$(dirname ${img})
 bsn=$(basename ${img})
 
 if [[ ! (-d "${dir}/1.0x" && -d "${dir}/2.0x" \
-      && -d "${dir}/3.0x" && -d "${dir}/4.0x") ]]; then
+      && -d "${dir}/3.0x" && -d "${dir}/4.0x" \
+      && -d "${dir}/tiny") ]]; then
     usage
     exit 1
 fi
 
+resize x25 ${img} ${dir}/tiny/${bsn}
 resize x$((4 * ${height})) ${img} ${dir}/4.0x/${bsn}
 resize x$((3 * ${height})) ${img} ${dir}/3.0x/${bsn}
 resize x$((2 * ${height})) ${img} ${dir}/2.0x/${bsn}

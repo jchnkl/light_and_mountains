@@ -12,7 +12,7 @@
 # '''
 
 html_template = '''\
-<a data-fancybox="grid" href="{{w_dir}}/{{i}}" itemprop="contentUrl" data-index="{{idx}}">
+<a data-fancybox="grid" href="{{w_dir}}/{{i}}" data-width="{{i_width}}" data-height="{{i_height}}">
 <img class="grid-box"
      alt="{{title}}"
      longdesc="{{caption}}"

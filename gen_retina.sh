@@ -10,14 +10,14 @@ fi
 function usage() {
   cat << EOF
 
-  $0 [--annotate] \$height \${image}
+  $0 [--annotate] \$height \$image
 
-  Expects the following directories to exist relative to \${image}:
+  Expects the following directories to exist relative to \$image:
 
-  \$(dirname \${image})/1.0x
-  \$(dirname \${image})/2.0x
-  \$(dirname \${image})/3.0x
-  \$(dirname \${image})/4.0x
+  \$(dirname \$image)/1.0x
+  \$(dirname \$image)/2.0x
+  \$(dirname \$image)/3.0x
+  \$(dirname \$image)/4.0x
 EOF
 }
 
@@ -35,17 +35,24 @@ function resize() {
      ${in} ${out}
   if [ ${annotate} = 'true' ]; then
     mogrify \
+      -strip \
+      -interlace Plane \
+      -sampling-factor 4:2:0 \
+      -define jpeg:dct-method=float \
+      -quality 75% \
       -font DejaVu-Sans-Bold\
       -pointsize 40\
       -undercolor '#000080'\
       -fill white\
       -gravity NorthEast\
-      -annotate +50+50 "${geometry}" \
+      -annotate +30+30 "${geometry}" \
       ${out}
   fi
 }
 
-if [ ${#@} -lt 2 ]; then
+# re='^(x[0-9]+|[0-9]+x|[0-9]+x[0-9]+|[0-9]+%)$'
+re='^[0-9]+$'
+if [[ ${#@} -lt 2 || ! ($1 =~ $re) ]]; then
   usage
   exit 1
 fi
@@ -53,21 +60,24 @@ fi
 height=$1
 shift
 
-img=$1
+imgs=$@
 
-dir=$(dirname ${img})
+for img in ${imgs}; do
 
-bsn=$(basename ${img})
+  dir=$(dirname ${img})
 
-if [[ ! (-d "${dir}/1.0x" && -d "${dir}/2.0x" \
-      && -d "${dir}/3.0x" && -d "${dir}/4.0x" \
-      && -d "${dir}/tiny") ]]; then
-    usage
-    exit 1
-fi
+  bsn=$(basename ${img})
 
-resize x25 ${img} ${dir}/tiny/${bsn}
-resize x$((4 * ${height})) ${img} ${dir}/4.0x/${bsn}
-resize x$((3 * ${height})) ${img} ${dir}/3.0x/${bsn}
-resize x$((2 * ${height})) ${img} ${dir}/2.0x/${bsn}
-resize x$((1 * ${height})) ${img} ${dir}/1.0x/${bsn}
+  if [[ ! (-d "${dir}/1.0x" && -d "${dir}/2.0x" \
+        && -d "${dir}/3.0x" && -d "${dir}/4.0x" \
+        && -d "${dir}/tiny") ]]; then
+      usage
+      exit 1
+  fi
+
+  resize x25 ${img} ${dir}/tiny/${bsn}
+  resize x$((4 * ${height})) ${img} ${dir}/4.0x/${bsn}
+  resize x$((3 * ${height})) ${img} ${dir}/3.0x/${bsn}
+  resize x$((2 * ${height})) ${img} ${dir}/2.0x/${bsn}
+  resize x$((1 * ${height})) ${img} ${dir}/1.0x/${bsn}
+done

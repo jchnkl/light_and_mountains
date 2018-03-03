@@ -10,9 +10,9 @@ img {
   display: block;
 }
 
-img:not([src]) {
-  visibility: hidden;
-}
+/* img:not([src]) { */
+/*   visibility: hidden; */
+/* } */
 
 .grid-box {
   position: absolute;

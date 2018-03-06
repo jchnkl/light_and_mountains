@@ -12,16 +12,23 @@
 # '''
 
 html_template = '''\
-<a data-fancybox="grid" href="{{w_dir}}/{{i}}" data-width="{{i_width}}" data-height="{{i_height}}">
+<a data-fancybox="grid"
+   data-width="{{i_width}}"
+   data-height="{{i_height}}"
+   href="{{w_dir}}/tiny/{{i}}"
+   data-srcset="{{w_dir}}/1.0x/{{i}} {{sizes['1.0x'][0]}}w,
+                {{w_dir}}/2.0x/{{i}} {{sizes['2.0x'][0]}}w,
+                {{w_dir}}/3.0x/{{i}} {{sizes['3.0x'][0]}}w,
+                {{w_dir}}/4.0x/{{i}} {{sizes['4.0x'][0]}}w">
 <img class="grid-box"
      alt="{{title}}"
      longdesc="{{caption}}"
      data-aspect="{{i_aspect}}"
      src="{{w_dir}}/tiny/{{i}}"
-     data-srcset="{{w_dir}}/1.0x/{{i}} 1.0x,
-                  {{w_dir}}/2.0x/{{i}} 2.0x,
-                  {{w_dir}}/3.0x/{{i}} 3.0x,
-                  {{w_dir}}/4.0x/{{i}} 4.0x"
+     data-srcset="{{w_dir}}/1.0x/{{i}} {{sizes['1.0x'][0]}}w,
+                  {{w_dir}}/2.0x/{{i}} {{sizes['2.0x'][0]}}w,
+                  {{w_dir}}/3.0x/{{i}} {{sizes['3.0x'][0]}}w,
+                  {{w_dir}}/4.0x/{{i}} {{sizes['4.0x'][0]}}w"
 /></a>
 
 '''
@@ -66,6 +73,7 @@ def gen_item_html(data):
                           , grid_5=grid_5
                           , i_aspect=data['i_aspect']
                           , thumbnails=data['thumbnails']
+                          , sizes=data['sizes']
                           )
 
 def one_file_per_item():

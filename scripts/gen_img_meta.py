@@ -78,6 +78,11 @@ for image in IMAGES:
     t_width = img.size[0]
     t_height = img.size[1]
 
+    sizes = {}
+    for scale in ['1.0x', '2.0x', '3.0x', '4.0x']:
+        img = Image.open(W_DIR + sep + scale + sep + i)
+        sizes[scale] = [img.size[0], img.size[1]]
+
     exif = { 'title': title
            , 'caption': caption
            , 'rating': rating
@@ -96,6 +101,7 @@ for image in IMAGES:
             , 't_height': t_height
             , 't_aspect': t_width / t_height
             , 'exif': exif
+            , 'sizes': sizes
             , 'thumbnails': thumbnails
             }
         )

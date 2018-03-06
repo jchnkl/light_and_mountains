@@ -24,7 +24,7 @@ html_template = '''\
      alt="{{title}}"
      longdesc="{{caption}}"
      data-aspect="{{i_aspect}}"
-     src="{{w_dir}}/tiny/{{i}}"
+     data-src="{{w_dir}}/tiny/{{i}}"
      data-srcset="{{w_dir}}/1.0x/{{i}} {{sizes['1.0x'][0]}}w,
                   {{w_dir}}/2.0x/{{i}} {{sizes['2.0x'][0]}}w,
                   {{w_dir}}/3.0x/{{i}} {{sizes['3.0x'][0]}}w,
